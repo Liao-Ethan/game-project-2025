@@ -6,10 +6,9 @@ import java.awt.Color;
 import java.awt.Font;
 
 import java.awt.CardLayout;
-
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -38,19 +37,3 @@ class BobGame // Written by Torence Lsai
 	}
 }
 
-class BobHolder extends JPanel // Written by Torence Lsai with direction from Sir Eddieton V
-{
-	CardLayout cards;
-	public BobHolder()
-	{
-		cards = new CardLayout();
-		setLayout(cards);
-		Cover cover = new Cover(this);
-		add(cover, "cover");
-	}
-	
-	public CardLayout getCards()
-	{
-		return cards;
-	}
-}
