@@ -29,7 +29,11 @@ class InstructionsCenter extends JPanel
     {
         bh4 = bhIn3;
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        String instructions = "In the game panel, ";
+        String instructions = "In the game panel, you have a frog, which is what you are " + 
+            "controlling. You move the frog either by dragging it or using the arrow keys" +
+            " to the square with the right answer to the question. There will be 4 answer" +
+            " choices. After you moved the frog to the desired position, you press submit" +
+            " and the computer will grade your answer.";
         JTextArea instructionsText = new JTextArea(instructions);
         JButton homeButton = new JButton("Home");
 
