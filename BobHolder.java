@@ -23,10 +23,13 @@ class BobHolder extends JPanel
 	{
 		cards = new CardLayout();
 		setLayout(cards);
+		Instructions instructions = new Instructions(this);
+
 		Cover cover = new Cover(this);
 		Home home = new Home(this);
 		add(cover, "cover");
 		add(home, "home");
+		add(instructions, "instructions");
 	}
 	
 	public CardLayout getCards()

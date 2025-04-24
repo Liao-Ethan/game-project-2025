@@ -30,9 +30,6 @@ class Home extends BasePanel
 		InstructHandler iHandler = new InstructHandler();
 		instructButton.addActionListener(iHandler);
 		getPanel("right").add(instructButton);
-		
-		
-		
 	}
 	
 	class InstructHandler implements ActionListener
@@ -48,3 +45,9 @@ class Home extends BasePanel
 	}
 }
 
+
+class ModeButton
+{
+	public ModeButton()
+	{}
+}
