@@ -17,8 +17,12 @@ class Instructions extends JPanel
     {
         setLayout(new BorderLayout(10,10));
         JPanel instructionBlank = new JPanel();
+        BobHolder bh5 = new BobHolder();
+        InstructionsCenter iCenter = new InstructionsCenter(bh5);
+
         add(instructionBlank, BorderLayout.EAST);
         add(instructionBlank, BorderLayout.WEST);
+        add(iCenter, BorderLayout.CENTER);
     }
 }
 
