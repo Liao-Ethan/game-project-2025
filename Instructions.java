@@ -1,5 +1,11 @@
+/* Ethan Liao and Lorence Tsai
+ */
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
@@ -22,7 +28,7 @@ class InstructionsCenter extends JPanel
 	public InstructionsCenter(BobHolder bhIn3)
     {
         bh4 = bhIn3;
-        setLayout(new FlowLayout(10, 10));
+        setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
         JTextArea instructionsText = new JTextArea("do work");
         JButton homeButton = new JButton("Home");
 

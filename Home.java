@@ -40,5 +40,9 @@ class Home extends JPanel
 		add(empty2, BorderLayout.WEST);
 		
 		JPanel buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(3, 1));
+
+		
 	}
 }
+
