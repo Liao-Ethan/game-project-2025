@@ -29,20 +29,21 @@ class InstructionsCenter extends JPanel
     {
         bh4 = bhIn3;
         setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
-        JTextArea instructionsText = new JTextArea("do work");
+        String instructions = "In the game panel, ";
+        JTextArea instructionsText = new JTextArea(instructions);
         JButton homeButton = new JButton("Home");
 
         HomeListener hl = new HomeListener();
 
         homeButton.addActionListener(hl);
 
-        add(InstructionsText);
+        add(instructionsText);
         add(homeButton);
     }
 
     class HomeListener implements ActionListener
     {
-        public void ActionPerformed(ActionEvent evt)
+        public void actionPerformed(ActionEvent evt)
         {
             String command = evt.getActionCommand();
             if (command.equals("Home"))
