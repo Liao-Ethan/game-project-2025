@@ -6,6 +6,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -16,33 +19,32 @@ import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
-class Home extends JPanel
+class Home extends BasePanel
 {
-	BobHolder bh3;
-	public Home(BobHolder bhIn2)
+	public Home(BobHolder bhIn3)
 	{
-		bh3 = bhIn2;
+		super(bhIn3, "Select Game Mode");
 		
-		setLayout(new BorderLayout(10, 10));
+		JButton instructButton = new JButton("How to Play");
+		add(instructButton);
+		InstructHandler iHandler = new InstructHandler();
+		instructButton.addActionListener(iHandler);
+		getPanel("right").add(instructButton);
 		
-		JLabel title = new JLabel("Select Game Mode", JLabel.CENTER);
-		title.setFont(new Font("serif", Font.BOLD, 36));
-		add(title, BorderLayout.NORTH);
 		
-		JPanel empty1 = new JPanel();
-		empty1.setPreferredSize(new Dimension(250, 100));
-		empty1.setBackground(Color.BLUE);
-		add(empty1, BorderLayout.EAST);
 		
-		JPanel empty2 = new JPanel();
-		empty2.setPreferredSize(new Dimension(250, 100));
-		empty2.setBackground(Color.BLUE);
-		add(empty2, BorderLayout.WEST);
-		
-		JPanel buttonPanel = new JPanel();
-		buttonPanel.setLayout(new GridLayout(3, 1));
-
-		
+	}
+	
+	class InstructHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent evt)
+		{
+			String command = evt.getActionCommand();
+			if (command.equals("How to Play"))
+			{
+				bh3.getCards().show(bh3, "instructions");
+			}
+		}
 	}
 }
 
