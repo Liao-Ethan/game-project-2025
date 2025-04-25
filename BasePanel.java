@@ -55,6 +55,10 @@ class BasePanel extends JPanel
 		{
 			return empty2;
 		}
+		else if (panelName.equals("center"))
+		{
+			return centerPanel;
+		}
 		
 		return centerPanel;
 	}
