@@ -22,7 +22,7 @@ class GamePanel extends BasePanel
         HomeButtonListener hbl = new HomeButtonListener();
 
         home.addActionListener(hbl);
-        add(home, BorderLayout.EAST);
+        getPanel("right").add(home);
     }
 
     class HomeButtonListener implements ActionListener
@@ -32,7 +32,6 @@ class GamePanel extends BasePanel
             String command = evt.getActionCommand();
             if (command.equals("home"))
             {
-                System.out.println("home");
                 bh5.getCards().show(bh5, "home");
             }
         }
