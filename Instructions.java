@@ -1,7 +1,10 @@
 /* Ethan Liao and Lorence Tsai
  */
 
+import java.awt.Font;
+
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import java.awt.event.ActionListener;
@@ -11,21 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
-
-// class Instructions extends JPanel
-// {
-//     public Instructions()
-//     {
-//         setLayout(new BorderLayout(10,10));
-//         JPanel instructionBlank = new JPanel();
-//         BobHolder bh5 = new BobHolder();
-//         InstructionsCenter iCenter = new InstructionsCenter(bh5);
-
-//         add(instructionBlank, BorderLayout.EAST);
-//         add(instructionBlank, BorderLayout.WEST);
-//         add(iCenter, BorderLayout.CENTER);
-//     }
-// }
 
 class Instructions extends BasePanel
 {
@@ -43,7 +31,8 @@ class Instructions extends BasePanel
             " and the computer will grade your answer.";
         JTextArea instructionsText = new JTextArea(instructions);
         JButton homeButton = new JButton("Home");
-        JScrollPane scroller = new JScrollPane(instructionsText);
+        instructionsText.setFont(new Font("dialog", Font.PLAIN, 24));
+        
         instructionsText.setEditable(false);
         instructionsText.setLineWrap(true);
         instructionsText.setWrapStyleWord(true);
@@ -51,7 +40,9 @@ class Instructions extends BasePanel
         HomeListener hl = new HomeListener();
 
         homeButton.addActionListener(hl);
-
+        
+        JScrollPane scroller = new JScrollPane(instructionsText);
+        scroller.setPreferredSize(new Dimension(480, 200));
         getPanel("center").add(scroller);
         getPanel("center").add(homeButton);
     }
