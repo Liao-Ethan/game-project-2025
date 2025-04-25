@@ -30,10 +30,12 @@ class BobHolder extends JPanel
 		Cover cover = new Cover(this);
 		Home home = new Home(this);
 		GamePanel game = new GamePanel(this);
+		Flashcards fcards = new Flashcards(this);
 		add(cover, "cover");
 		add(home, "home");
 		add(instructions, "instructions");
 		add(game, "game");
+		add(fcards, "cards");
 	}
 	
 	public CardLayout getCards()

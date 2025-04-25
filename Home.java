@@ -1,22 +1,10 @@
 /* Ethan Liao and Lorence Tsai
  */
-
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.Dimension;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import java.awt.CardLayout;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
 import javax.swing.JButton;
 
 class Home extends BasePanel
@@ -59,10 +47,12 @@ class Home extends BasePanel
 			else if (command.equals("Word Identification"))
 			{
 				bh3.getCards().show(bh3, "game");
+				bh3.setStroke(false);
 			}
 			else if (command.equals("Stroke Order"))
 			{
 				bh3.getCards().show(bh3, "game");
+				bh3.setStroke(true);
 			}
 		}
 	}
