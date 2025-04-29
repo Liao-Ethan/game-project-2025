@@ -19,7 +19,7 @@ import javax.swing.JScrollPane;
 
 class Instructions extends BasePanel
 {
-    BobHolder bh4;
+    private BobHolder bh4;
     public Instructions(BobHolder bhIn4)
     {
         super(bhIn4, "How to Play");

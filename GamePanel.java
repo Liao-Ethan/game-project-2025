@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
 
 class GamePanel extends BasePanel
 {
-    BobHolder bh5;
+    private BobHolder bh5;
     public GamePanel(BobHolder bh5In)
     {
         super(bh5In, "game");
