@@ -1,6 +1,4 @@
 /* Ethan Liao and Lorence Tsai
- * Home.java
- * Done by Ethan Liao
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
