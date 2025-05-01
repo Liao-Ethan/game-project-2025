@@ -7,6 +7,7 @@ import java.awt.Font;
 import java.awt.Dimension;
 
 import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
@@ -32,12 +33,12 @@ class BasePanel extends JPanel
 		
 		empty1.setPreferredSize(new Dimension(250, 100));
 		empty1.setBackground(Color.BLUE);
-		empty1.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		empty1.setLayout(new BorderLayout(10, 10));
 		add(empty1, BorderLayout.WEST);
 		
 		empty2.setPreferredSize(new Dimension(250, 100));
 		empty2.setBackground(Color.BLUE);
-		empty2.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 10));
+		empty2.setLayout(new GridLayout(3, 1));
 		add(empty2, BorderLayout.EAST);
 		
 		add(centerPanel, BorderLayout.CENTER);

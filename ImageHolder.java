@@ -88,6 +88,16 @@ class ImageHolder extends JPanel
         }
     }
 
+    public int getX()
+    {
+        return coords[0];
+    }
+
+    public int getY()
+    {
+        return coords[1];
+    }
+
     public JPanel getParentPanel()
     {
         return panel;

@@ -5,15 +5,16 @@ import javax.swing.JPanel;
 
 public class BobFrog extends ImageHolder
 {
-    public BobFrog(JPanel panelIn)
+    public BobFrog(JPanel panelIn, int xIn, int yIn)
     {
-        super(1, panelIn, "Bob", 600, 0);
+        super(1, panelIn, "Bob", xIn, yIn);
         setFrameBounds(0, 0);
         getImages();
     }
 
-    public int[] getCoords()
+    public void getCoords1()
     {
-        return getCoords();
+        //System.out.println(getCoords()[0]);
+        //return getCoords();
     }
 }
