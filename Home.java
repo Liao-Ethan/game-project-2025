@@ -9,10 +9,11 @@ import javax.swing.JButton;
 
 class Home extends BasePanel
 {
+	private BobHolder bh3;
 	public Home(BobHolder bhIn3)
 	{
 		super(bhIn3, "Select Game Mode"); // Extends BasePanel
-		
+		bh3 = bhIn3;
 		// Adding the components to their respective panels
 		JButton instructButton = new JButton("How to Play"); // How to play button
 		add(instructButton);

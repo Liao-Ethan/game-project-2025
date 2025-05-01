@@ -12,7 +12,8 @@ import javax.swing.JPanel;
 
 import java.awt.Graphics;
 
-class ImageHolder {
+class ImageHolder extends JPanel
+{
     private Image[] img; // array of images
     private String name; // basic name of the collective images (ie. "Bob" for frames "Bob1.png", "Bob2.png", etc)
     private Timer timer; // Timer for animation
