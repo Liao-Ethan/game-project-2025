@@ -21,6 +21,7 @@ class ImageHolder extends JPanel
     private int start, end; // Start and end frame for animation (customization purposes)
     private JPanel panel; // Parent panel, what we are drawing on
     private int coords[]; // Coordinates
+    private int imgWidth, imgHeight;
     public ImageHolder(int framesIn, JPanel panelIn, String nameIn, int xIn, int yIn) {
         img = new Image[framesIn];
         panel = panelIn;
@@ -29,10 +30,12 @@ class ImageHolder extends JPanel
         end = 0;
         name = "assets/img/" + nameIn;
         TimerHandler tHandler = new TimerHandler();
-        timer = new Timer(50, tHandler);
+        timer = new Timer(200, tHandler);
         coords = new int[]{xIn, yIn};
         getImages();
         timer.start();
+        imgWidth = img[0].getWidth(panel);
+        imgHeight = img[0].getHeight(panel);
     }
 
     public void getImages()
@@ -67,6 +70,7 @@ class ImageHolder extends JPanel
             {
                 idx = start;
             }
+            panel.repaint();
         }
     }
 
@@ -91,5 +95,15 @@ class ImageHolder extends JPanel
     public JPanel getParentPanel()
     {
         return panel;
+    }
+
+    public int getWidth()
+    {
+        return imgWidth;
+    }
+
+    public int getHeight()
+    {
+        return imgHeight;
     }
 }

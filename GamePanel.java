@@ -129,12 +129,17 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         repaint();
     }
 
-    public void mouseClicked(MouseEvent evt)
+    public void mousePressed(MouseEvent evt)
     {
-
+        System.out.println("Banana");
+        System.out.println(evt.getX() + " " + bob.getX());
+        if (evt.getX() > bob.getX() && evt.getX() < bob.getX() + bob.getWidth())
+        {
+            bob.setFrameBounds(5, 6);
+        }
     }
 
-    public void mousePressed(MouseEvent evt)
+    public void mouseClicked(MouseEvent evt)
     {
         
     }

@@ -21,7 +21,6 @@ class BobGame // Written by Torence Lsai
 		BobHolder bh = new BobHolder(); 		
 		frame.getContentPane().add(bh);		
 		frame.setVisible(true);	
-		System.out.println("eddie = dum");	
 	}
 }
 
