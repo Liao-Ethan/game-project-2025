@@ -11,4 +11,9 @@ public class BobFrog extends ImageHolder
         setFrameBounds(0, 0);
         getImages();
     }
+
+    public int[] getCoords()
+    {
+        return getCoords();
+    }
 }
