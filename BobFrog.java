@@ -32,6 +32,11 @@ public class BobFrog extends ImageHolder implements MouseMotionListener, MouseLi
         System.out.println("Aple");
     }
 
+    public int[] getCoords()
+    {
+        return getCoords();
+    }
+
     public void mouseClicked(MouseEvent evt)
     {
 

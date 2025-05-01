@@ -16,19 +16,35 @@ import java.awt.event.ActionListener;
 class GamePanel extends BasePanel
 {
     private BobHolder bh5;
+    private JButton submit;
+    private boolean submitted;
+    private Paint paint;
     public GamePanel(BobHolder bh5In)
     {
         super(bh5In, "game");
         bh5 = bh5In;
-        Paint paint = new Paint();
+        submitted = false;
+        submit = new JButton("Submit");
+        paint = new Paint();
         add(paint, BorderLayout.CENTER);
 
         JButton home = new JButton("home");
         HomeButtonListener hbl = new HomeButtonListener();
 
         home.addActionListener(hbl);
+        submit.addActionListener(hbl);
         getPanel("right").add(home);
         paint.repaint();
+    }
+
+    public void checkCorrect()
+    {
+        int xCoord = paint.getBobCoords()[0];
+        int yCoord = paint.getBobCoords()[1];
+        if (xCoord >= 50 && xCoord <= 290 && yCoord >= 140 && yCoord <= 380)
+        {
+            System.out.println("Correct");
+        }
     }
 
     class HomeButtonListener implements ActionListener
@@ -39,6 +55,14 @@ class GamePanel extends BasePanel
             if (command.equals("home"))
             {
                 bh5.getCards().show(bh5, "home");
+            }
+            else if (command.equals("Submit"))
+            {
+                submitted = true;
+            }
+            else
+            {
+                submitted = false;
             }
         }
     }
@@ -58,7 +82,7 @@ class Paint extends JPanel
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
-        drawRects(g);
+        //drawRects(g);
 
         for (int i=0; i<2; i++)
         {
@@ -88,5 +112,10 @@ class Paint extends JPanel
         g.drawRect(380, 390, 380, 240);
 
         
+    }
+
+    public int[] getBobCoords()
+    {
+        return bob.getCoords();
     }
 }
