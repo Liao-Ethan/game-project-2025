@@ -30,7 +30,7 @@ class ImageHolder extends JPanel
         end = 0;
         name = "assets/img/" + nameIn;
         TimerHandler tHandler = new TimerHandler();
-        timer = new Timer(200, tHandler);
+        timer = new Timer(500, tHandler);
         coords = new int[]{xIn, yIn};
         getImages();
         timer.start();
@@ -69,7 +69,9 @@ class ImageHolder extends JPanel
     {
         public void actionPerformed(ActionEvent evt)
         {
+            // System.out.println("" + name + idx);
             idx++;
+            // System.out.println("Updating hbahaha");
             if (idx >= end)
             {
                 idx = start;
@@ -97,6 +99,16 @@ class ImageHolder extends JPanel
         }
     }
 
+    public int getX()
+    {
+        return coords[0];
+    }
+
+    public int getY()
+    {
+        return coords[1];
+    }
+
     public JPanel getParentPanel()
     {
         return panel;
@@ -110,5 +122,10 @@ class ImageHolder extends JPanel
     public int getHeight()
     {
         return imgHeight;
+    }
+
+    public int getIdx()
+    {
+        return idx;
     }
 }

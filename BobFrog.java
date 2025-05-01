@@ -7,43 +7,27 @@ import java.awt.event.MouseListener;
 
 public class BobFrog extends ImageHolder implements MouseListener
 {
-    public BobFrog(JPanel panelIn)
+    public BobFrog(JPanel panelIn, int xIn, int yIn)
     {
-        super(6, panelIn, "Bob", 600, 0);
+        super(6, panelIn, "Bob", xIn, yIn);
         setFrameBounds(0, 3);
         getImages();
-        addMouseListener(this);
         
+        addMouseListener(this);
     }
-
-    public int[] getCoords()
-    {
-        return getCoords();
-    }
-
 
     public void mouseClicked(MouseEvent evt) 
-    {
-        // System.out.println("Apple");
-        // setFrameBounds(4, 5);
-    }
+    {}
 
     public void mouseEntered(MouseEvent evt) 
-    {
-        System.out.println(getX());
-    }
+    {}
 
-    public void mouseExited(MouseEvent e) 
-    {
-        
-    }
+    public void mouseExited(MouseEvent evt) 
+    {}
 
-    public void mousePressed(MouseEvent e) 
-    {
-        
-    }
+    public void mousePressed(MouseEvent evt) 
+    {}
 
-    public void mouseReleased(MouseEvent e) 
-    {
-    }
+    public void mouseReleased(MouseEvent evt) 
+    {}
 }
