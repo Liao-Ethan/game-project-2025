@@ -13,13 +13,13 @@ import javax.swing.JPanel;
 import java.awt.Graphics;
 
 class ImageHolder {
-    private Image[] img;
-    private String name;
-    private Timer timer;
-    private int idx;
-    private int start, end;
-    private JPanel panel;
-    private int coords[];
+    private Image[] img; // array of images
+    private String name; // basic name of the collective images (ie. "Bob" for frames "Bob1.png", "Bob2.png", etc)
+    private Timer timer; // Timer for animation
+    private int idx; // Frame idx for animation
+    private int start, end; // Start and end frame for animation (customization purposes)
+    private JPanel panel; // Parent panel, what we are drawing on
+    private int coords[]; // Coordinates
     public ImageHolder(int framesIn, JPanel panelIn, String nameIn, int xIn, int yIn) {
         img = new Image[framesIn];
         panel = panelIn;
@@ -45,7 +45,7 @@ class ImageHolder {
             catch (IOException e)
             {
                 System.err.println("\n\nImage " + name + (i) + ".png does not exist\n\n");
-                // e.printStackTrace();
+                e.printStackTrace();
                 System.exit(1);
             }
         }

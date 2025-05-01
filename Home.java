@@ -11,11 +11,12 @@ class Home extends BasePanel
 {
 	public Home(BobHolder bhIn3)
 	{
-		super(bhIn3, "Select Game Mode");
+		super(bhIn3, "Select Game Mode"); // Extends BasePanel
 		
-		JButton instructButton = new JButton("How to Play");
+		// Adding the components to their respective panels
+		JButton instructButton = new JButton("How to Play"); // How to play button
 		add(instructButton);
-		ButtonHandler bHandler = new ButtonHandler();
+		ButtonHandler bHandler = new ButtonHandler(); // Instantiating handler for the button
 		instructButton.addActionListener(bHandler);
 		getPanel("right").add(instructButton);
 
@@ -23,7 +24,8 @@ class Home extends BasePanel
 
 		JButton[] menuButtons = new JButton[3];
 		String[] buttonNames = {"Flashcards", "Word Identification", "Stroke Order"};
-		for (int i=0; i<3; i++) {
+		for (int i=0; i<3; i++) // Drawing all the buttons from an array
+		{
 			menuButtons[i] = new JButton(buttonNames[i]);
 			menuButtons[i].addActionListener(bHandler);
 			getPanel("center").add(menuButtons[i]);

@@ -47,10 +47,12 @@ class GamePanel extends BasePanel
 class Paint extends JPanel
 {
     private LilyPad[] pads;
+    private BobFrog bob;
 
     public Paint()
     {
         pads = new LilyPad[4];
+        bob = new BobFrog(this);
     }
 
     public void paintComponent(Graphics g)
@@ -67,6 +69,8 @@ class Paint extends JPanel
             }
             
         }
+
+        bob.drawImage(g);
     }
 
     public void drawRects(Graphics g)

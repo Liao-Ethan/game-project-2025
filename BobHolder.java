@@ -6,8 +6,8 @@ import javax.swing.JPanel;
 
 class BobHolder extends JPanel
 {
-	CardLayout cards;
-	private boolean isStrokes;
+	private CardLayout cards; // CardLayout variable
+	private boolean isStrokes; // Will define later
 	public BobHolder()
 	{
 		isStrokes = false;

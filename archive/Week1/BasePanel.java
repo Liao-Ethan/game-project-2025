@@ -1,25 +1,21 @@
 /* Ethan Liao and Lorence Tsai
  * BasePanel.java
  */
-
-import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Dimension;
 
-import java.awt.CardLayout;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
-import java.awt.GridLayout;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.JButton;
 
 class BasePanel extends JPanel
 {
 	BobHolder bh3;
+
+	
 	private JPanel empty1 = new JPanel();
 	private JPanel empty2 = new JPanel();
 	private JPanel centerPanel = new JPanel();
