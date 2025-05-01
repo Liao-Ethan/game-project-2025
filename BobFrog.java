@@ -24,12 +24,13 @@ public class BobFrog extends ImageHolder implements MouseListener
 
     public void mouseClicked(MouseEvent evt) 
     {
-        System.out.println("Apple");
-        setFrameBounds(4, 5);
+        // System.out.println("Apple");
+        // setFrameBounds(4, 5);
     }
 
     public void mouseEntered(MouseEvent evt) 
     {
+        System.out.println(getX());
     }
 
     public void mouseExited(MouseEvent e) 
@@ -42,7 +43,6 @@ public class BobFrog extends ImageHolder implements MouseListener
         
     }
 
-    @Override
     public void mouseReleased(MouseEvent e) 
     {
     }

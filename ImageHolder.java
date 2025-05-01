@@ -59,6 +59,10 @@ class ImageHolder extends JPanel
     {
         start = startIn;
         end = endIn;
+        if (idx < start || idx > end)
+        {
+            idx = start;
+        }
     }
 
     class TimerHandler implements ActionListener
@@ -77,6 +81,7 @@ class ImageHolder extends JPanel
     public void drawImage(Graphics g)
     {
         g.drawImage(img[idx], coords[0], coords[1], panel);
+        // System.out.println(coords[0]);
     }
 
     public void setCoords(int[] coordsIn)
@@ -86,7 +91,7 @@ class ImageHolder extends JPanel
         {
             coords[0] = 0;
         }
-        else if (coords[0] >= 500)
+        else if (coords[0] >= panel.getWidth())
         {
             coords[0] = 600;
         }

@@ -126,17 +126,18 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     public void mouseDragged(MouseEvent evt)
     {
         bob.setCoords(new int[]{evt.getX(), evt.getY()});
+        bob.setFrameBounds(5, 6);
         repaint();
     }
 
     public void mousePressed(MouseEvent evt)
     {
-        System.out.println("Banana");
-        System.out.println(evt.getX() + " " + bob.getX());
-        if (evt.getX() > bob.getX() && evt.getX() < bob.getX() + bob.getWidth())
-        {
-            bob.setFrameBounds(5, 6);
-        }
+        // System.out.println("Banana");
+        // System.out.println(evt.getX() + " " + bob.getX());
+        // if (evt.getX() > bob.getX() && evt.getX() < bob.getX() + bob.getWidth())
+        // {
+        //     bob.setFrameBounds(5, 6);
+        // }
     }
 
     public void mouseClicked(MouseEvent evt)
@@ -146,6 +147,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
 
     public void mouseReleased(MouseEvent evt)
     {
+        bob.setFrameBounds(0, 3);
 
     }
 
