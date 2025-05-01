@@ -12,6 +12,9 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
 class GamePanel extends BasePanel
 {
@@ -44,7 +47,7 @@ class GamePanel extends BasePanel
     }
 }
 
-class Paint extends JPanel
+class Paint extends JPanel implements MouseMotionListener, MouseListener
 {
     private LilyPad[] pads;
     private BobFrog bob;
@@ -53,6 +56,8 @@ class Paint extends JPanel
     {
         pads = new LilyPad[4];
         bob = new BobFrog(this);
+        addMouseMotionListener(this);
+        addMouseListener(this);
     }
 
     public void paintComponent(Graphics g)
@@ -88,5 +93,40 @@ class Paint extends JPanel
         g.drawRect(380, 390, 380, 240);
 
         
+    }
+
+    public void mouseMoved(MouseEvent evt)
+    {
+    }
+
+    public void mouseDragged(MouseEvent evt)
+    {
+        bob.setCoords(new int[]{evt.getX(), evt.getY()});
+        repaint();
+    }
+
+    public void mouseClicked(MouseEvent evt)
+    {
+
+    }
+
+    public void mousePressed(MouseEvent evt)
+    {
+        
+    }
+
+    public void mouseReleased(MouseEvent evt)
+    {
+
+    }
+
+    public void mouseEntered(MouseEvent evt)
+    {
+
+    }
+
+    public void mouseExited(MouseEvent evt)
+    {
+
     }
 }

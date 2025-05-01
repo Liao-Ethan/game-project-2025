@@ -78,6 +78,14 @@ class ImageHolder extends JPanel
     public void setCoords(int[] coordsIn)
     {
         coords = coordsIn;
+        if (coords[0] <= 0)
+        {
+            coords[0] = 0;
+        }
+        else if (coords[0] >= 500)
+        {
+            coords[0] = 600;
+        }
     }
 
     public JPanel getParentPanel()
