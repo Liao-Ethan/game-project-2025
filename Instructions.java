@@ -5,21 +5,19 @@
 
 import java.awt.Font;
 
-import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
 import javax.swing.JScrollPane;
 
 class Instructions extends BasePanel
 {
-    BobHolder bh4;
+    private BobHolder bh4;
     public Instructions(BobHolder bhIn4)
     {
         super(bhIn4, "How to Play");

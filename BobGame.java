@@ -1,19 +1,6 @@
 /* Ethan Liao and Lorence Tsai
  */
- 
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-
-import java.awt.CardLayout;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 
 
 class BobGame // Written by Torence Lsai

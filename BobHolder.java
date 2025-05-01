@@ -1,25 +1,13 @@
 /* Ethan Liao and Lorence Tsai
  * Written mostly by Lorence Tsai
  */
-
-import java.awt.Graphics;
-import java.awt.Color;
-import java.awt.Font;
-
 import java.awt.CardLayout;
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JButton;
 
 class BobHolder extends JPanel
 {
-	CardLayout cards;
-	private boolean isStrokes;
+	private CardLayout cards; // CardLayout variable
+	private boolean isStrokes; // Will define later
 	public BobHolder()
 	{
 		isStrokes = false;

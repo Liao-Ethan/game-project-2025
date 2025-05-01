@@ -10,7 +10,7 @@ import javax.swing.JButton;
 
 public class Flashcards extends BasePanel
 {
-    BobHolder bh7;
+    private BobHolder bh7;
     public Flashcards(BobHolder bhIn6)
     {
         super(bhIn6, "Review Your Vocab");
