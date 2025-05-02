@@ -1,5 +1,4 @@
-/*Ethan Liao and Lorence Tsai
- * GamePanel.java
+/* GamePanel.java
  * Done by Lorence Tsai
  */
 
