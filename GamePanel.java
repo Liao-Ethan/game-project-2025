@@ -72,8 +72,9 @@ class GamePanel extends BasePanel
             correctLabel.setText("Incorrect");
         }
 
-        paint.setXFrog(600);
-        paint.setYFrog(0);
+        // paint.setXFrog(600);
+        // paint.setYFrog(0);
+        paint.resetBob();
         //correctPanel.add(correctLabel);
         paint.repaint();
     }
@@ -115,6 +116,11 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         addMouseListener(this);
     }
 
+    public void resetBob()
+    {
+        bob = new BobFrog(this, 600, 0);
+    }
+
     public void setXFrog(int xFrog)
     {
         this.xFrog = xFrog;
@@ -141,7 +147,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     {
         super.paintComponent(g);
         //drawRects(g);
-        bob = new BobFrog(this, xFrog, yFrog);
+        // bob = new BobFrog(this, xFrog, yFrog);
 
         for (int i=0; i<2; i++)
         {
@@ -179,31 +185,28 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
 
     public void mouseDragged(MouseEvent evt)
     {
-        //bob.setCoords(new int[]{evt.getX(), evt.getY()});
+        bob.setCoords(new int[]{evt.getX(), evt.getY()});
         xFrog = evt.getX();
         yFrog = evt.getY();
+        System.out.println(bob.getIdx());
         repaint();
-    }
-
-    public void mouseClicked(MouseEvent evt)
-    {
-
     }
 
     public void mousePressed(MouseEvent evt)
     {
-        
+        bob.setFrameBounds(5, 6);
     }
+
+    public void mouseClicked(MouseEvent evt)
+    {}
 
     public void mouseReleased(MouseEvent evt)
     {
-
+        bob.setFrameBounds(0, 3);
     }
 
     public void mouseEntered(MouseEvent evt)
-    {
-
-    }
+    {}
 
     public void mouseExited(MouseEvent evt)
     {}

@@ -21,6 +21,7 @@ class ImageHolder extends JPanel
     private int start, end; // Start and end frame for animation (customization purposes)
     private JPanel panel; // Parent panel, what we are drawing on
     private int coords[]; // Coordinates
+    private int imgWidth, imgHeight;
     public ImageHolder(int framesIn, JPanel panelIn, String nameIn, int xIn, int yIn) {
         img = new Image[framesIn];
         panel = panelIn;
@@ -29,10 +30,12 @@ class ImageHolder extends JPanel
         end = 0;
         name = "assets/img/" + nameIn;
         TimerHandler tHandler = new TimerHandler();
-        timer = new Timer(50, tHandler);
+        timer = new Timer(500, tHandler);
         coords = new int[]{xIn, yIn};
         getImages();
         timer.start();
+        imgWidth = img[0].getWidth(panel);
+        imgHeight = img[0].getHeight(panel);
     }
 
     public void getImages()
@@ -56,23 +59,31 @@ class ImageHolder extends JPanel
     {
         start = startIn;
         end = endIn;
+        if (idx < start || idx > end)
+        {
+            idx = start;
+        }
     }
 
     class TimerHandler implements ActionListener
     {
         public void actionPerformed(ActionEvent evt)
         {
+            // System.out.println("" + name + idx);
             idx++;
+            // System.out.println("Updating hbahaha");
             if (idx >= end)
             {
                 idx = start;
             }
+            panel.repaint();
         }
     }
 
     public void drawImage(Graphics g)
     {
         g.drawImage(img[idx], coords[0], coords[1], panel);
+        // System.out.println(coords[0]);
     }
 
     public void setCoords(int[] coordsIn)
@@ -82,7 +93,7 @@ class ImageHolder extends JPanel
         {
             coords[0] = 0;
         }
-        else if (coords[0] >= 500)
+        else if (coords[0] >= panel.getWidth())
         {
             coords[0] = 600;
         }
@@ -101,5 +112,20 @@ class ImageHolder extends JPanel
     public JPanel getParentPanel()
     {
         return panel;
+    }
+
+    public int getWidth()
+    {
+        return imgWidth;
+    }
+
+    public int getHeight()
+    {
+        return imgHeight;
+    }
+
+    public int getIdx()
+    {
+        return idx;
     }
 }
