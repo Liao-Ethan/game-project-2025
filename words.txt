@@ -14,6 +14,9 @@ Level 1
 14 下 “xià" down
 15 白  "bái" white
 16 黑 "hēi" black
+17 車 “chē" car
+18 早 "zǎo" early
+19 山 “shān" mountain
 Level 2
 1 要 "yào" want
 2 成 "chéng" become
@@ -22,7 +25,11 @@ Level 2
 5 紙 "zhǐ" paper
 6 快 “kuài" fast
 7 慢 “màn" slow
-8 
+8 球 “qiú" ball
+9 飛 “fēi" fly
+10 掃 "sǎo" sweep
+11 湯 “tāng" soup
+12 
 Level 3
 1 真的 "zhēn de" real
 2 中文 "zhōng wén" Chinese
@@ -35,3 +42,7 @@ Level 3
 9 餅乾 “bǐng gān" cookie
 10 學校 “xué xiào" school
 11 考試 “kǎo shì" test
+12 睡覺 "shuì jiào" sleep
+13 猴子 “hóu zǐ" monkey
+14 青蛙 “qīng wā" frog
+15 
