@@ -59,17 +59,40 @@ class GamePanel extends BasePanel
         correctLabel.setFont(font);
         correctLabel.setOpaque(true);
 
-        if (xCoord >= 50 && xCoord <= 290 && yCoord >= 140 && yCoord <= 380)
+        boolean isFirstPad = (xCoord >= 50 && xCoord <= 290 && yCoord >= 140 && yCoord <= 380);
+        boolean isSecondPad = (xCoord >= 410 && xCoord <= 620 && yCoord >= 140 && yCoord <= 380);
+        boolean isThirdPad = (xCoord >= 50 && xCoord <= 290 && yCoord >= 380 && yCoord <= 620);
+        boolean isFourthPad = (xCoord >= 410 && xCoord <= 620 && yCoord >= 380 && yCoord <= 620);
+
+        if (isFirstPad)
         {
             System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
-        else
+        else if (isSecondPad)
         {
             System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
+        }
+        else if (isThirdPad)
+        {
+            System.out.println("Incorrect");
+            correctLabel.setForeground(Color.RED);
+            correctLabel.setText("Incorrect");
+        }
+        else if (isFourthPad)
+        {
+            System.out.println("Incorrect");
+            correctLabel.setForeground(Color.RED);
+            correctLabel.setText("Incorrect");
+        }
+        else
+        {
+            System.out.println("Incorrect");
+            correctLabel.setForeground(Color.RED);
+            correctLabel.setText("Try Again");
         }
 
         // paint.setXFrog(600);
@@ -86,6 +109,8 @@ class GamePanel extends BasePanel
             String command = evt.getActionCommand();
             if (command.equals("home"))
             {
+                paint.resetBob();
+                paint.repaint();
                 bh5.getCards().show(bh5, "home");
                 correctLabel.setForeground(Color.WHITE);
             }
