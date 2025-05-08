@@ -57,7 +57,7 @@ class FileReader
                 counter++;
             }
         }
-        System.out.println("counter = " +counter);
+        System.out.println("counter = " + counter);
         return words;
     }
 
@@ -98,16 +98,13 @@ class FileReader
         }
 
         for (int i=0; i<newList.length; i++) {
+            int randIdx = (int)(Math.random() * newList.length);
+            String temp =  new String("");
+            temp = newList[i];
+            newList[i] = newList[randIdx];
+            newList[randIdx] = temp;
             System.out.println(newList[i]);
-        //     System.out.println(newList[i]);
-        //     int randIdx = (int)(Math.random() * newList.length);
-        //     String temp =  new String("");
-        //     temp = newList[i];
-        //     System.out.println(temp);
-        //     newList[i] = newList[randIdx];
-        //     newList[randIdx] = temp;
         }
-        System.out.println(newList.length);
 
         return newList;
     }
