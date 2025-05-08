@@ -24,6 +24,14 @@ class GamePanel extends BasePanel
     private Paint paint;
     private JPanel correctPanel;
     private JLabel correctLabel;
+    private FileReader fReader;
+
+    private int whichPad;
+    private int level;
+    private int idx;
+
+    private String[] questions;
+
     public GamePanel(BobHolder bh5In)
     {
         super(bh5In, "game");
@@ -49,6 +57,15 @@ class GamePanel extends BasePanel
         getPanel("right").add(submit);
         getPanel("right").add(correctPanel);
         paint.repaint();
+
+        fReader = new FileReader("words");
+        level = 1;
+        questions = new String[fReader.getLevelLengths(level)];
+        questions = fReader.shuffle(level);
+        whichPad = -1;
+        idx = 0;
+        System.out.println(questions[0]);
+        setQuestion(questions[idx]);
     }
 
     public void checkCorrect()
@@ -64,35 +81,41 @@ class GamePanel extends BasePanel
         boolean isThirdPad = (xCoord >= 50 && xCoord <= 290 && yCoord >= 380 && yCoord <= 620);
         boolean isFourthPad = (xCoord >= 410 && xCoord <= 620 && yCoord >= 380 && yCoord <= 620);
 
-        if (isFirstPad)
+        if (isFirstPad && whichPad == 1)
         {
             System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
-        else if (isSecondPad)
+        else if (isSecondPad && whichPad == 2)
         {
-            System.out.println("Incorrect");
-            correctLabel.setForeground(Color.RED);
-            correctLabel.setText("Incorrect");
+            System.out.println("Correct");
+            correctLabel.setForeground(Color.GREEN);
+            correctLabel.setText("Correct");
         }
-        else if (isThirdPad)
+        else if (isThirdPad && whichPad == 3)
         {
-            System.out.println("Incorrect");
-            correctLabel.setForeground(Color.RED);
-            correctLabel.setText("Incorrect");
+            System.out.println("Correct");
+            correctLabel.setForeground(Color.GREEN);
+            correctLabel.setText("Correct");
         }
-        else if (isFourthPad)
+        else if (isFourthPad && whichPad == 4)
+        {
+            System.out.println("Correct");
+            correctLabel.setForeground(Color.GREEN);
+            correctLabel.setText("Correct");
+        }
+        else if (!isFirstPad && !isSecondPad && !isThirdPad && isFourthPad)
         {
             System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
-            correctLabel.setText("Incorrect");
+            correctLabel.setText("Try Again");
         }
         else
         {
             System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
-            correctLabel.setText("Try Again");
+            correctLabel.setText("Incorrect");
         }
 
         // paint.setXFrog(600);
@@ -117,6 +140,26 @@ class GamePanel extends BasePanel
             else if (command.equals("Submit"))
             {
                 checkCorrect();
+            }
+        }
+    }
+    
+    public void setQuestion(String question)
+    {
+        whichPad = (int)(Math.random() * 4);
+        for (int i=0; i<paint.getPads().length; i++)
+        {
+            if (i == whichPad)
+            {
+                paint.getPads()[i].setWord(question);
+            }
+            else
+            {
+                int randomWordIdx = (int)(Math.random() * questions.length);
+                if (!questions[randomWordIdx].equals(question))
+                {
+                    paint.getPads()[i].setWord(questions[randomWordIdx]);
+                }
             }
         }
     }
@@ -245,5 +288,10 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     public int getBobY()
     {
         return bob.getY();
+    }
+
+    public LilyPad[] getPads()
+    {
+        return pads;
     }
 }

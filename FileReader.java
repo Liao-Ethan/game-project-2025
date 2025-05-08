@@ -9,9 +9,9 @@ import java.io.IOException;
 
 class FileReader 
 {
-    private final int LEVEL1_COUNT = 20;
-    private final int LEVEL2_COUNT = 20;
-    private final int LEVEL3_COUNT = 20;
+    private final int LEVEL1_COUNT = 18;
+    private final int LEVEL2_COUNT = 16;
+    private final int LEVEL3_COUNT = 12;
 
     private String[] wordsList;
     private File file;
@@ -20,11 +20,13 @@ class FileReader
 
     public FileReader(String nameIn)
     {
-        wordsList = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
-        wordsList = getList();
         file = null;
         name = nameIn;
         reader = null;
+        wordsList = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
+        // wordsList = getList();
+        setUpWords();
+        
     }
 
     public void loadFile()
@@ -45,12 +47,14 @@ class FileReader
     {
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
         reader.nextLine();
-        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT + 2; i++)
+        int counter = 0;
+        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT + 1; i++)
         {
             String line = reader.nextLine();
             if (line.indexOf("Level") == -1)
             {
-                words[i] = line;
+                words[i-counter] = line;
+                counter++;
             }
         }
         return words;
@@ -93,12 +97,33 @@ class FileReader
         }
 
         for (int i=0; i<newList.length; i++) {
-            int randIdx = (int)(Math.random() * newList.length);
-            String temp = newList[i];
-            newList[i] = newList[randIdx];
-            newList[randIdx] = temp;
+            System.out.println(newList[i]);
+        //     System.out.println(newList[i]);
+        //     int randIdx = (int)(Math.random() * newList.length);
+        //     String temp =  new String("");
+        //     temp = newList[i];
+        //     System.out.println(temp);
+        //     newList[i] = newList[randIdx];
+        //     newList[randIdx] = temp;
         }
+        System.out.println(newList.length);
 
         return newList;
+    }
+
+    public int getLevelLengths(int level)
+    {
+        if (level == 1)
+        {
+            return LEVEL1_COUNT;
+        }
+        else if (level == 2)
+        {
+            return LEVEL2_COUNT;
+        }
+        else
+        {
+            return LEVEL3_COUNT;
+        }
     }
 }
