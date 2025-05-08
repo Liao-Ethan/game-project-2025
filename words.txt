@@ -34,6 +34,12 @@ Level 2
 中文 "zhōng wén" Chinese
 英文 “yīng wén“ English
 美國 “měi guó" America
+我的 “wǒ de" mine
+他的 “tā de" his
+你的 “nǐ de" your(s)
+你好 “nǐ hǎo" hello
+再見 ”zài jiàn" goodbye
+開心 “kāi xīn" happy
 Level 3
 美國 “měi guó" America
 加州 "jiā zhōu" California
@@ -47,3 +53,5 @@ Level 3
 猴子 “hóu zǐ" monkey
 青蛙 “qīng wā" frog
 家庭 “iā tíng“ household
+難過 “nán guò" sad
+奇怪 ”qí guài“ weird
