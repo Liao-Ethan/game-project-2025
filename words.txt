@@ -1,48 +1,49 @@
 Level 1
-1 你 "nǐ" you
-2 好 "hǎo" okay
-3 我 "wǒ" me
-4 的 "de" of
-5 他 "tā" him
-6 不 "bù" no
-8 天 "tiān" day
-9 水 "shuǐ" water
-10 火 "huǒ" fire
-11 土 "tǔ" dirt
-12 中 "zhōng" middle
-13 上 “shàng" up
-14 下 “xià" down
-15 白  "bái" white
-16 黑 "hēi" black
-17 車 “chē" car
-18 早 "zǎo" early
-19 山 “shān" mountain
+你 "nǐ" you
+好 "hǎo" okay
+我 "wǒ" me
+的 "de" of
+他 "tā" him
+不 "bù" no
+天 "tiān" day
+水 "shuǐ" water
+火 "huǒ" fire
+土 "tǔ" dirt
+中 "zhōng" middle
+上 “shàng" up
+下 “xià" down
+白  "bái" white
+黑 "hēi" black
+車 “chē" car
+早 "zǎo" early
+山 “shān" mountain
 Level 2
-1 要 "yào" want
-2 成 "chéng" become
-3 鬼 “guǐ" ghost
-4 請 “qǐng" please
-5 紙 "zhǐ" paper
-6 快 “kuài" fast
-7 慢 “màn" slow
-8 球 “qiú" ball
-9 飛 “fēi" fly
-10 掃 "sǎo" sweep
-11 湯 “tāng" soup
-12 
+要 "yào" want
+成 "chéng" become
+鬼 “guǐ" ghost
+請 “qǐng" please
+紙 "zhǐ" paper
+快 “kuài" fast
+慢 “màn" slow
+球 “qiú" ball
+飛 “fēi" fly
+掃 "sǎo" sweep
+湯 “tāng" soup
+喝 "hē" drink
+真的 "zhēn de" real
+中文 "zhōng wén" Chinese
+英文 “yīng wén“ English
+美國 “měi guó" America
 Level 3
-1 真的 "zhēn de" real
-2 中文 "zhōng wén" Chinese
-3 英文 “yīng wén“ English
-4 美國 “měi guó" America
-5 加州 "jiā zhōu" California
-6 功課 “gōng kè" homework
-7 餃子 "jiǎo zǐ" dumpling
-8 電腦 “diàn nǎo" computer
-9 餅乾 “bǐng gān" cookie
-10 學校 “xué xiào" school
-11 考試 “kǎo shì" test
-12 睡覺 "shuì jiào" sleep
-13 猴子 “hóu zǐ" monkey
-14 青蛙 “qīng wā" frog
-15 
+美國 “měi guó" America
+加州 "jiā zhōu" California
+功課 “gōng kè" homework
+餃子 "jiǎo zǐ" dumpling
+電腦 “diàn nǎo" computer
+餅乾 “bǐng gān" cookie
+學校 “xué xiào" school
+考試 “kǎo shì" test
+睡覺 "shuì jiào" sleep
+猴子 “hóu zǐ" monkey
+青蛙 “qīng wā" frog
+家庭 “iā tíng“ household
