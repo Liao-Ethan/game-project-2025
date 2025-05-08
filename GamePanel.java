@@ -64,7 +64,7 @@ class GamePanel extends BasePanel
         questions = fReader.shuffle(level);
         whichPad = -1;
         idx = 0;
-        System.out.println(questions[0]);
+        //System.out.println(questions[0]);
         setQuestion(questions[idx]);
     }
 
@@ -172,7 +172,24 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private int xFrog;
     private int yFrog;
 
+
     public Paint()
+    {
+        pads = new LilyPad[4];  // Initialize the pads array with 4 elements
+        
+        // Initialize each LilyPad object
+        for (int i = 0; i < pads.length; i++) {
+            pads[i] = new LilyPad(this, 50 + (i % 2) * 360, 140 + (i / 2) * 240);
+        }
+
+        xFrog = 600;
+        yFrog = 0;
+        
+        bob = new BobFrog(this, xFrog, yFrog);
+        addMouseMotionListener(this);
+        addMouseListener(this);
+    }
+    /*public Paint()
     {
         pads = new LilyPad[4];
 
@@ -182,7 +199,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         bob = new BobFrog(this, xFrog, yFrog);
         addMouseMotionListener(this);
         addMouseListener(this);
-    }
+    }*/
 
     public void resetBob()
     {

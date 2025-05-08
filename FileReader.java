@@ -10,8 +10,8 @@ import java.io.IOException;
 class FileReader 
 {
     private final int LEVEL1_COUNT = 18;
-    private final int LEVEL2_COUNT = 16;
-    private final int LEVEL3_COUNT = 12;
+    private final int LEVEL2_COUNT = 22;
+    private final int LEVEL3_COUNT = 14;
 
     private String[] wordsList;
     private File file;
@@ -48,15 +48,16 @@ class FileReader
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
         reader.nextLine();
         int counter = 0;
-        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT + 1; i++)
+        for (int i=0; i<=LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++)
         {
             String line = reader.nextLine();
             if (line.indexOf("Level") == -1)
             {
-                words[i-counter] = line;
+                words[counter] = line;
                 counter++;
             }
         }
+        System.out.println("counter = " +counter);
         return words;
     }
 
