@@ -7,7 +7,8 @@ import java.awt.event.MouseListener;
 
 public class BobFrog extends ImageHolder implements MouseListener
 {
-    public BobFrog(JPanel panelIn, int xIn, int yIn)
+    public BobFrog(JPanel panelIn, int xIn, int yIn) // used in polymorphism
+    // calls methods in ImageHolder when needed
     {
         super(6, panelIn, "Bob", xIn, yIn);
         setFrameBounds(0, 3);

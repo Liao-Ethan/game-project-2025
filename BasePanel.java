@@ -8,7 +8,6 @@ import java.awt.Dimension;
 
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
-import java.awt.FlowLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -18,16 +17,16 @@ class BasePanel extends JPanel
 	private BobHolder bh3;
 
 	// Three panels: left, right, center.
-	private JPanel empty1 = new JPanel();
+	private JPanel empty1 = new JPanel(); // empty panels on the side for buttons
 	private JPanel empty2 = new JPanel();
 	private JPanel centerPanel = new JPanel();
 	public BasePanel(BobHolder bhIn2, String titleIn)
 	{
 		bh3 = bhIn2;
 		
-		setLayout(new BorderLayout(10, 10));
+		setLayout(new BorderLayout(10, 10)); // set to borderLayout with 10 as v&h gaps
 		
-		JLabel title = new JLabel(titleIn, JLabel.CENTER);
+		JLabel title = new JLabel(titleIn, JLabel.CENTER); // add a JLabel with text in the center
 		title.setFont(new Font("serif", Font.BOLD, 36));
 		add(title, BorderLayout.NORTH);
 		

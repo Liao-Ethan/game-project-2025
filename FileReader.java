@@ -1,5 +1,4 @@
-/* Ethan Liao
- * FileReader.java
+/* FileReader.java
  */
 
 import java.util.Scanner;
@@ -9,21 +8,21 @@ import java.io.IOException;
 
 class FileReader 
 {
-    private final int LEVEL1_COUNT = 18;
+    private final int LEVEL1_COUNT = 18; // words that are in each level
     private final int LEVEL2_COUNT = 22;
     private final int LEVEL3_COUNT = 14;
 
-    private String[] wordsList;
-    private File file;
-    private String name;
-    private Scanner reader;
+    private String[] wordsList; // list of words from the file "words.txt"
+    private File file; // words.txt but saved as file
+    private String name; // name of file we are reading from
+    private Scanner reader; // scanner to read the .txt file
 
-    public FileReader(String nameIn)
+    public FileReader(String nameIn) // take in the name when called
     {
         file = null;
         name = nameIn;
         reader = null;
-        wordsList = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
+        wordsList = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT]; // set to lines in word.txt
         // wordsList = getList();
         setUpWords();
         
@@ -46,31 +45,35 @@ class FileReader
     public String[] getList()
     {
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
-        reader.nextLine();
+        reader.nextLine(); // skip first line of words.txt
         int counter = 0;
-        for (int i=0; i<=LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++)
+        for (int i=0; i<=LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++) // loop until words.txt is over
         {
             String line = reader.nextLine();
-            if (line.indexOf("Level") == -1)
+            if (line.indexOf("Level") == -1) // check if "level" is read(we skip that part)
             {
                 words[counter] = line;
                 counter++;
             }
         }
+<<<<<<< HEAD
+=======
+        System.out.println("counter = " + counter); // for debugging
+>>>>>>> eca60d061d41dbf2630fbdc3ff0e4a31355dccd3
         return words;
     }
 
-    public void setUpWords()
+    public void setUpWords() // call the methods to get words from file
     {
         loadFile();
         wordsList = getList();
         reader.close();
     }
 
-    public String[] shuffle(int level)
+    public String[] shuffle(int level) // take in which level it is
     {
         String[] newList;
-        if (level == 1)
+        if (level == 1) // store only the words from the level selected to newList[]
         {
             newList = new String[LEVEL1_COUNT];
             for (int i=0; i<LEVEL1_COUNT; i++) {
@@ -97,17 +100,21 @@ class FileReader
         }
 
         for (int i=0; i<newList.length; i++) {
-            int randIdx = (int)(Math.random() * newList.length);
+            int randIdx = (int)(Math.random() * newList.length); // randomize the words in the array
             String temp =  new String("");
             temp = newList[i];
             newList[i] = newList[randIdx];
             newList[randIdx] = temp;
+<<<<<<< HEAD
+=======
+            System.out.println(newList[i]); // used for debugging
+>>>>>>> eca60d061d41dbf2630fbdc3ff0e4a31355dccd3
         }
 
         return newList;
     }
 
-    public int getLevelLengths(int level)
+    public int getLevelLengths(int level) // returns the level chosen
     {
         if (level == 1)
         {

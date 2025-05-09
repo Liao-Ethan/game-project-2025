@@ -40,9 +40,9 @@ class GamePanel extends BasePanel
         paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
 
-        correctLabel = new JLabel();
+        correctLabel = new JLabel(); // label on the side showing if correct or not
 
-        correctPanel = new JPanel();
+        correctPanel = new JPanel(); // panel that should hold the label
 
         JButton home = new JButton("home");
         HomeButtonListener hbl = new HomeButtonListener();
@@ -59,7 +59,7 @@ class GamePanel extends BasePanel
         paint.repaint();
 
         fReader = new FileReader("words");
-        level = 1;
+        level = 1; // initialize the level
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
         whichPad = -1;
@@ -69,18 +69,19 @@ class GamePanel extends BasePanel
 
     public void checkCorrect()
     {
-        int xCoord = paint.getBobX();
+        int xCoord = paint.getBobX(); // get coords of the frog(aka bob)
         int yCoord = paint.getBobY();
         Font font = new Font("Serif", Font.PLAIN, 25);
         correctLabel.setFont(font);
         correctLabel.setOpaque(true);
 
+        // check which lilypad the frog is on
         boolean isFirstPad = (xCoord >= 50 && xCoord <= 290 && yCoord >= 140 && yCoord <= 380);
         boolean isSecondPad = (xCoord >= 410 && xCoord <= 620 && yCoord >= 140 && yCoord <= 380);
         boolean isThirdPad = (xCoord >= 50 && xCoord <= 290 && yCoord >= 380 && yCoord <= 620);
         boolean isFourthPad = (xCoord >= 410 && xCoord <= 620 && yCoord >= 380 && yCoord <= 620);
 
-        if (isFirstPad && whichPad == 1)
+        if (isFirstPad && whichPad == 1) // if the frog is on the first pad, it is correct(for now)
         {
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
@@ -100,7 +101,8 @@ class GamePanel extends BasePanel
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
-        else if (!isFirstPad && !isSecondPad && !isThirdPad && isFourthPad)
+        else if (!isFirstPad && !isSecondPad && !isThirdPad && isFourthPad) // if the frog isn't on any pad
+        // give the user a second chance
         {
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Try Again");
@@ -110,15 +112,12 @@ class GamePanel extends BasePanel
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
         }
-
-        // paint.setXFrog(600);
-        // paint.setYFrog(0);
-        paint.resetBob();
-        //correctPanel.add(correctLabel);
+        paint.resetBob(); // reset frog(bob) to original location
         paint.repaint();
     }
 
-    class HomeButtonListener implements ActionListener
+    class HomeButtonListener implements ActionListener // button handler to check which button is pressed
+    // and perform corresponding action
     {
         public void actionPerformed(ActionEvent evt)
         {
