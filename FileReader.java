@@ -56,10 +56,7 @@ class FileReader
                 counter++;
             }
         }
-<<<<<<< HEAD
-=======
         System.out.println("counter = " + counter); // for debugging
->>>>>>> eca60d061d41dbf2630fbdc3ff0e4a31355dccd3
         return words;
     }
 
@@ -105,10 +102,6 @@ class FileReader
             temp = newList[i];
             newList[i] = newList[randIdx];
             newList[randIdx] = temp;
-<<<<<<< HEAD
-=======
-            System.out.println(newList[i]); // used for debugging
->>>>>>> eca60d061d41dbf2630fbdc3ff0e4a31355dccd3
         }
 
         return newList;
