@@ -101,7 +101,7 @@ class GamePanel extends BasePanel
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
-        else if (!isFirstPad && !isSecondPad && !isThirdPad && isFourthPad) // if the frog isn't on any pad
+        else if (!isFirstPad && !isSecondPad && !isThirdPad && !isFourthPad) // if the frog isn't on any pad
         // give the user a second chance
         {
             correctLabel.setForeground(Color.RED);
