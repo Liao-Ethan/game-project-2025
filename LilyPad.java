@@ -57,7 +57,8 @@ public class LilyPad extends ImageHolder
 
     public void drawText(Graphics g, String text)
     {
-        g.setFont(new Font("Serif", Font.PLAIN, 20));
+        
+        g.setFont(loadFont());
         g.setColor(Color.WHITE);
         g.drawString(text, getX(), getY() + 150);
     }
