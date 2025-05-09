@@ -37,7 +37,7 @@ class GamePanel extends BasePanel
         super(bh5In, "game");
         bh5 = bh5In;
         submit = new JButton("Submit");
-        paint = new Paint();
+        paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
 
         correctLabel = new JLabel();
@@ -64,7 +64,6 @@ class GamePanel extends BasePanel
         questions = fReader.shuffle(level);
         whichPad = -1;
         idx = 0;
-        //System.out.println(questions[0]);
         setQuestion(questions[idx]);
     }
 
@@ -83,37 +82,31 @@ class GamePanel extends BasePanel
 
         if (isFirstPad && whichPad == 1)
         {
-            System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
         else if (isSecondPad && whichPad == 2)
         {
-            System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
         else if (isThirdPad && whichPad == 3)
         {
-            System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
         else if (isFourthPad && whichPad == 4)
         {
-            System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
         else if (!isFirstPad && !isSecondPad && !isThirdPad && isFourthPad)
         {
-            System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Try Again");
         }
         else
         {
-            System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
         }
@@ -143,25 +136,20 @@ class GamePanel extends BasePanel
             }
         }
     }
-    
+
+    public String[] getQuestions()
+    {
+        return questions;
+    }
+
+    public int getIdx()
+    {
+        return idx;
+    }
+
     public void setQuestion(String question)
     {
-        whichPad = (int)(Math.random() * 4);
-        for (int i=0; i<paint.getPads().length; i++)
-        {
-            if (i == whichPad)
-            {
-                paint.getPads()[i].setWord(question);
-            }
-            else
-            {
-                int randomWordIdx = (int)(Math.random() * questions.length);
-                if (!questions[randomWordIdx].equals(question))
-                {
-                    paint.getPads()[i].setWord(questions[randomWordIdx]);
-                }
-            }
-        }
+        paint.setWhichPad((int)(Math.random() * 4));
     }
 }
 
@@ -171,12 +159,16 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private BobFrog bob;
     private int xFrog;
     private int yFrog;
+    private int whichPad;
+
+    private GamePanel gp;
 
 
-    public Paint()
+    public Paint(GamePanel gpIn)
     {
+        gp = gpIn;
         pads = new LilyPad[4];  // Initialize the pads array with 4 elements
-        
+        whichPad = 0;
         // Initialize each LilyPad object
         for (int i = 0; i < pads.length; i++) {
             pads[i] = new LilyPad(this, 50 + (i % 2) * 360, 140 + (i / 2) * 240);
@@ -229,6 +221,11 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         return xFrog;
     }
 
+    public void setWhichPad(int newPad)
+    {
+        whichPad = newPad;
+    }
+
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
@@ -241,6 +238,20 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
             {
                 pads[i+j] = new LilyPad(this, 50 + (j*360), 140 + (i*240));
                 pads[i+j].drawImage(g);
+                // pads[i+j].drawText(g, );
+                if (i+j == whichPad)
+                {
+                    pads[i+j].drawText(g, gp.getQuestions()[gp.getIdx()]);
+                }
+                else
+                {
+                    int randomWordIdx = (int)(Math.random() * gp.getQuestions().length);
+                    if (!gp.getQuestions()[randomWordIdx].equals(gp.getQuestions()[gp.getIdx()]))
+                    {
+                        pads[i+j].drawText(g, gp.getQuestions()[randomWordIdx]);
+                    }
+                    // pads[i+j].drawText(g, TOOL_TIP_TEXT_KEY);
+                }
             }
             
         }
@@ -274,7 +285,6 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         bob.setCoords(new int[]{evt.getX(), evt.getY()});
         xFrog = evt.getX();
         yFrog = evt.getY();
-        System.out.println(bob.getIdx());
         repaint();
     }
 

@@ -57,7 +57,6 @@ class FileReader
                 counter++;
             }
         }
-        System.out.println("counter = " + counter);
         return words;
     }
 
@@ -103,7 +102,6 @@ class FileReader
             temp = newList[i];
             newList[i] = newList[randIdx];
             newList[randIdx] = temp;
-            System.out.println(newList[i]);
         }
 
         return newList;
