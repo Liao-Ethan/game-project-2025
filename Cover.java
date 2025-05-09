@@ -22,11 +22,12 @@ class Cover extends JPanel
 		setLayout(null);
 		
 		JLabel titleLabel = new JLabel("<html><center>Bob the Frog Explores the Deep Sea of Chinese Literacy</center></html>");
-		titleLabel.setFont(new Font("serif", Font.BOLD, 36));
+		// use html to center text in JLabel
+		titleLabel.setFont(new Font("serif", Font.BOLD, 36)); // setting the font
 		add(titleLabel);
-		titleLabel.setBounds(350, 0, 580, 150);
+		titleLabel.setBounds(350, 0, 580, 150); // setting location in the nullLayout
 		
-		CoverButtonHandler cbh = new CoverButtonHandler();
+		CoverButtonHandler cbh = new CoverButtonHandler(); // instantiate a new buttonHandler class
 		
 		JButton next = new JButton("Play");
 		next.setFont(new Font("serif", Font.BOLD, 24));
@@ -41,7 +42,8 @@ class Cover extends JPanel
 		add(quit);
 	}
 	
-	class CoverButtonHandler implements ActionListener
+	class CoverButtonHandler implements ActionListener // button handler to check which button is clicked
+	// and do corresponding actions
 	{
 		public void actionPerformed(ActionEvent evt)
 		{

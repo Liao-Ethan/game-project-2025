@@ -3,7 +3,7 @@
 import javax.swing.JFrame;
 
 
-class BobGame // Written by Torence Lsai
+class BobGame // Written by Lorence Tsai
 {
 	public static void main(String[] bob)
 	{
@@ -11,7 +11,7 @@ class BobGame // Written by Torence Lsai
 		bg.runGame();
 	}
 	
-	public void runGame()
+	public void runGame() // your average creation of JFrame to work with
 	{
 		JFrame frame = new JFrame("Bob the Frog Explores the Deep Sea of Chinese Literacy");
 		frame.setSize( 1280, 720);				
