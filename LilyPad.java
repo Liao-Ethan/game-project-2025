@@ -60,7 +60,7 @@ public class LilyPad extends ImageHolder
         
         g.setFont(loadFont());
         g.setColor(Color.WHITE);
-        g.drawString(text, getX(), getY() + 150);
+        g.drawString(text, getX() + 100, getY() + 130);
     }
 
 }

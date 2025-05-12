@@ -1,4 +1,4 @@
-/* Ethan Liao and Lorence Tsai
+/* BobGame.java
  */
 import javax.swing.JFrame;
 

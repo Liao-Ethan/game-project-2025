@@ -21,10 +21,10 @@ class Home extends BasePanel
 		instructButton.addActionListener(bHandler);
 		getPanel("right").add(instructButton);
 
-		getPanel("center").setLayout(new GridLayout(1, 3));
+		getPanel("center").setLayout(new GridLayout(1, 4));
 
 		JButton[] menuButtons = new JButton[3];
-		String[] buttonNames = {"Flashcards", "Word Identification", "Stroke Order"};
+		String[] buttonNames = {"Flashcards", "Word Identification", "Definition"};
 		for (int i=0; i<3; i++) // Drawing all the buttons from an array
 		{
 			menuButtons[i] = new JButton(buttonNames[i]);
@@ -52,7 +52,7 @@ class Home extends BasePanel
 				bh3.getCards().show(bh3, "game");
 				bh3.setStroke(false);
 			}
-			else if (command.equals("Stroke Order"))
+			else if (command.equals("Definition"))
 			{
 				bh3.getCards().show(bh3, "game");
 				bh3.setStroke(true);
