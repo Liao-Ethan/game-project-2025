@@ -96,7 +96,8 @@ class FileReader
             newList = new String[1];
         }
 
-        for (int i=0; i<newList.length; i++) {
+        for (int i=0; i<newList.length; i++)
+        {
             int randIdx = (int)(Math.random() * newList.length); // randomize the words in the array
             String temp =  new String("");
             temp = newList[i];
