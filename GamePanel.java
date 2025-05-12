@@ -243,14 +243,18 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     {
         super.paintComponent(g);
 
+        int idxCounter = 0;
         for (int i=0; i<2; i++)
         {
             for (int j=0; j<2; j++)
             {
                 pads[i+j] = new LilyPad(this, 50 + (j*360), 140 + (i*240));
                 pads[i+j].drawImage(g);
-                pads[i+j].drawText(g, qStrings[i+j]);
+                pads[i+j].drawText(g, qStrings[i+j+idxCounter]);
+                //System.out.print((i+j+idxCounter) + " ");
             }
+            
+            idxCounter++;
         }
 
         bob.drawImage(g);
