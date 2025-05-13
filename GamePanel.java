@@ -25,6 +25,7 @@ class GamePanel extends BasePanel
     private JPanel correctPanel;
     private JLabel correctLabel;
     private FileReader fReader;
+    private JLabel questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
 
     private int whichPad;
     private int level;
@@ -47,6 +48,9 @@ class GamePanel extends BasePanel
         JButton home = new JButton("home");
         HomeButtonListener hbl = new HomeButtonListener();
 
+        questionLabel = new JLabel();
+        getPanel("left").add(questionLabel);
+
         home.addActionListener(hbl);
         submit.addActionListener(hbl);
 
@@ -65,6 +69,7 @@ class GamePanel extends BasePanel
         whichPad = -1;
         idx = 0;
         setQuestion(questions[idx]);
+        
     }
 
     public void checkCorrect()
@@ -117,7 +122,7 @@ class GamePanel extends BasePanel
         correctLabel.setForeground(Color.GREEN);
         correctLabel.setText("Correct");
         idx++;
-        // setQuestion(questions[idx]);
+        setQuestion(questions[idx]);
     }
 
     class HomeButtonListener implements ActionListener // button handler to check which button is pressed
@@ -152,27 +157,31 @@ class GamePanel extends BasePanel
 
     public void setQuestion(String question)
     {
-        whichPad = ((int)(Math.random() * 4) + 1);
+        whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
         System.out.println("whichPad = " + whichPad);
+        System.out.println(question);
+        questionLabel.setText(question.substring(question.lastIndexOf(" ")));
+
         String[] sentList = new String[4];
-        for (int i=0; i<sentList.length; i++)
+        for (int i = 0; i < sentList.length; i++)
         {
-            if (i == whichPad)
+            if (i == whichPad - 1) // put the correct answer at correct index
             {
                 sentList[i] = question.substring(0, question.indexOf(" "));
             }
             else
             {
-                int randomWordIdx = (int)(Math.random() * questions.length);
-                while (!questions[randomWordIdx].equals(question))
-                {
-                    sentList[i] = questions[randomWordIdx].substring(0, questions[randomWordIdx].indexOf(" "));
-                    randomWordIdx = (int)(Math.random() * questions.length);
-                }
+                String alt;
+                do {
+                    int randomWordIdx = (int)(Math.random() * questions.length);
+                    alt = questions[randomWordIdx];
+                } while (alt.equals(question));
+                sentList[i] = alt.substring(0, alt.indexOf(" "));
             }
         }
         paint.setQStrings(sentList);
     }
+
 }
 
 class Paint extends JPanel implements MouseMotionListener, MouseListener
@@ -181,7 +190,6 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private BobFrog bob;
     private int xFrog;
     private int yFrog;
-    private int whichPad;
     private String[] qStrings;
 
     private GamePanel gp;
@@ -192,7 +200,6 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         gp = gpIn;
         qStrings = new String[4];
         pads = new LilyPad[4];  // Initialize the pads array with 4 elements
-        whichPad = 0;
         // Initialize each LilyPad object
         for (int i = 0; i < pads.length; i++) {
             pads[i] = new LilyPad(this, 50 + (i % 2) * 360, 140 + (i / 2) * 240);
@@ -234,27 +241,19 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         return xFrog;
     }
 
-    public void setWhichPad(int newPad)
-    {
-        whichPad = newPad;
-    }
-
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
 
-        int idxCounter = 0;
-        for (int i=0; i<2; i++)
+        for (int i = 0; i < 2; i++)
         {
-            for (int j=0; j<2; j++)
+            for (int j = 0; j < 2; j++)
             {
-                pads[i+j] = new LilyPad(this, 50 + (j*360), 140 + (i*240));
-                pads[i+j].drawImage(g);
-                pads[i+j].drawText(g, qStrings[i+j+idxCounter]);
-                //System.out.print((i+j+idxCounter) + " ");
+                int padIndex = i * 2 + j;
+                pads[padIndex] = new LilyPad(this, 50 + (j * 360), 140 + (i * 240));
+                pads[padIndex].drawImage(g);
+                pads[padIndex].drawText(g, qStrings[padIndex]);
             }
-            
-            idxCounter++;
         }
 
         bob.drawImage(g);
