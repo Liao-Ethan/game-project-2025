@@ -42,7 +42,8 @@ class GamePanel extends BasePanel
         paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
         
-        Font buttonFont = new Font("Dialog", Font.PLAIN, 30);
+        Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
+        Font labelFont = new Font("Dialog", Font.PLAIN, 50); // fonts for labels
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
@@ -61,6 +62,7 @@ class GamePanel extends BasePanel
         homeButtonPanel.add(home);
 
         questionLabel = new JLabel();
+        questionLabel.setFont(labelFont);
         getPanel("left").add(questionLabel);
 
         home.addActionListener(hbl);
@@ -75,7 +77,7 @@ class GamePanel extends BasePanel
         paint.repaint();
 
         fReader = new FileReader("words");
-        level = 1; // initialize the level
+        level = 2; // initialize the level
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
         whichPad = -1;
