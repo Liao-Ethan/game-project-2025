@@ -152,8 +152,7 @@ class GamePanel extends BasePanel
 
     public void setQuestion(String question)
     {
-        whichPad = ((int)(Math.random() * 4) + 1);
-        System.out.println("whichPad = " + whichPad);
+        whichPad = ((int)(Math.random() * 4));
         String[] sentList = new String[4];
         for (int i=0; i<sentList.length; i++)
         {
@@ -205,6 +204,17 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         addMouseMotionListener(this);
         addMouseListener(this);
     }
+    /*public Paint()
+    {
+        pads = new LilyPad[4];
+
+        xFrog = 600;
+        yFrog = 0;
+
+        bob = new BobFrog(this, xFrog, yFrog);
+        addMouseMotionListener(this);
+        addMouseListener(this);
+    }*/
 
     public void resetBob()
     {
@@ -242,19 +252,33 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
+        //drawRects(g);
+        // bob = new BobFrog(this, xFrog, yFrog);
 
-        int idxCounter = 0;
         for (int i=0; i<2; i++)
         {
             for (int j=0; j<2; j++)
             {
                 pads[i+j] = new LilyPad(this, 50 + (j*360), 140 + (i*240));
                 pads[i+j].drawImage(g);
-                pads[i+j].drawText(g, qStrings[i+j+idxCounter]);
-                //System.out.print((i+j+idxCounter) + " ");
+                // // pads[i+j].drawText(g, );
+                // // if (i+j == whichPad)
+                // // {
+                // //     pads[i+j].drawText(g, gp.getQuestions()[gp.getIdx()]);
+                // // }
+                // // else
+                // // {
+                // //     int randomWordIdx = (int)(Math.random() * gp.getQuestions().length);
+                // //     if (!gp.getQuestions()[randomWordIdx].equals(gp.getQuestions()[gp.getIdx()]))
+                // //     {
+                // //         pads[i+j].drawText(g, gp.getQuestions()[randomWordIdx]);
+                // //     }
+                // //     // pads[i+j].drawText(g, TOOL_TIP_TEXT_KEY);
+                // // }
+                //
+                pads[i+j].drawText(g, qStrings[i+j]);
             }
             
-            idxCounter++;
         }
 
         bob.drawImage(g);
