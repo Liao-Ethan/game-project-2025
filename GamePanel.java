@@ -4,7 +4,9 @@
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.GraphicsEnvironment;
 import java.awt.Font;
+import java.awt.FontFormatException;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
@@ -17,6 +19,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.io.File;
+import java.io.IOException;
 
 class GamePanel extends BasePanel
 {
@@ -43,7 +47,8 @@ class GamePanel extends BasePanel
         add(paint, BorderLayout.CENTER);
         
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
-        Font labelFont = new Font("Dialog", Font.PLAIN, 50); // fonts for labels
+        // Font labelFont = new Font("Serif", Font.PLAIN, 50); // fonts for labels
+        Font labelFont = getFont();
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
@@ -83,7 +88,34 @@ class GamePanel extends BasePanel
         whichPad = -1;
         idx = 0;
         setQuestion(questions[idx]);
-        
+    }
+
+    public Font loadFont()
+    {
+        Font chineseFont = null;
+        //String fileName = "assets/fonts/YRDZST Medium/YRDZST Medium.ttf";
+        String fileName = "assets/fonts/chinese.msyh.ttf";
+        try 
+        {
+            //create the font to use. Specify the size!
+            chineseFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName)).deriveFont(50f);
+            GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            //register the font
+            ge.registerFont(chineseFont);
+        } 
+        catch (IOException e)
+        {
+            System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
+            e.printStackTrace();
+            System.exit(2);
+        } 
+        catch(FontFormatException e) {
+            System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
+            e.printStackTrace();
+            System.exit(3);
+        }
+
+        return chineseFont;
     }
 
     public void checkCorrect()
@@ -172,14 +204,29 @@ class GamePanel extends BasePanel
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
-        questionLabel.setText(question.substring(question.lastIndexOf(" ")));
+        
+        if (bh5.getDef() == false)
+        {
+            questionLabel.setText(question.substring(question.lastIndexOf(" ")));
+        }
+        else
+        {
+            questionLabel.setText(question.substring(0, question.indexOf(" ")));
+        }
 
         String[] sentList = new String[4];
         for (int i = 0; i < sentList.length; i++)
         {
             if (i == whichPad - 1) // put the correct answer at correct index
             {
-                sentList[i] = question.substring(0, question.indexOf(" "));
+                if (bh5.getDef() == false)
+                {
+                    sentList[i] = question.substring(0, question.indexOf(" "));
+                }
+                else
+                {
+                    sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
+                }
                 System.out.print(question + " | ");
             }
             else
@@ -190,11 +237,19 @@ class GamePanel extends BasePanel
                     randomWordIdx = (int)(Math.random() * questions.length);
                     alt = questions[randomWordIdx];
                 } while (alt.equals(question));
-                sentList[i] = alt.substring(0, alt.indexOf(" "));
+                if (bh5.getDef() == false)
+                {
+                    sentList[i] = alt.substring(0, alt.indexOf(" "));
+                }
+                else
+                {
+                    sentList[i] = alt.substring(alt.lastIndexOf(" "));
+                }
                 System.out.print(questions[randomWordIdx] + " | ");
             }
             
         }
+        System.out.println("");
         paint.setQStrings(sentList);
     }
 
