@@ -31,7 +31,8 @@ public class LilyPad extends ImageHolder
     public Font loadFont()
     {
         Font chineseFont = null;
-        String fileName = "assets/fonts/YRDZST Medium/YRDZST Medium.ttf";
+        //String fileName = "assets/fonts/YRDZST Medium/YRDZST Medium.ttf";
+        String fileName = "assets/fonts/chinese.msyh.ttf";
         try 
         {
             //create the font to use. Specify the size!

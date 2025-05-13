@@ -170,8 +170,6 @@ class GamePanel extends BasePanel
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
-        System.out.println("whichPad = " + whichPad);
-        System.out.println(question);
         questionLabel.setText(question.substring(question.lastIndexOf(" ")));
 
         String[] sentList = new String[4];
@@ -180,16 +178,20 @@ class GamePanel extends BasePanel
             if (i == whichPad - 1) // put the correct answer at correct index
             {
                 sentList[i] = question.substring(0, question.indexOf(" "));
+                System.out.print(question + " | ");
             }
             else
             {
                 String alt;
+                int randomWordIdx;
                 do {
-                    int randomWordIdx = (int)(Math.random() * questions.length);
+                    randomWordIdx = (int)(Math.random() * questions.length);
                     alt = questions[randomWordIdx];
                 } while (alt.equals(question));
                 sentList[i] = alt.substring(0, alt.indexOf(" "));
+                System.out.print(questions[randomWordIdx] + " | ");
             }
+            
         }
         paint.setQStrings(sentList);
     }
