@@ -1,6 +1,5 @@
-/*Ethan Liao and Lorence Tsai
- * Flashcards.java
- * Done by Ethan Liao
+/* Flashcards.java
+ * Done by Lorence Tsai
  */
 
 import java.awt.event.ActionEvent;

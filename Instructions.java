@@ -1,5 +1,4 @@
-/* Ethan Liao and Lorence Tsai
- * Instructions.java
+/* Instructions.java
  * Done by Lorence Tsai
  */
 

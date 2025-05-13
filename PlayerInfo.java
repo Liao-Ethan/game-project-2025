@@ -45,7 +45,8 @@ public class PlayerInfo
         }
         catch(IOException e)
         {
-
+			System.err.println("Unable to write to " + name + ".txt");
+			System.exit(3);
         }
     }
 }
