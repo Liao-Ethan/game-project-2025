@@ -1,57 +1,56 @@
 Level 1
-你 "nǐ" you
-好 "hǎo" okay
-我 "wǒ" me
-的 "de" of
-他 "tā" him
-不 "bù" no
-天 "tiān" day
-水 "shuǐ" water
-火 "huǒ" fire
-土 "tǔ" dirt
-中 "zhōng" middle
-上 “shàng" up
-下 “xià" down
-白  "bái" white
-黑 "hēi" black
-車 “chē" car
-早 "zǎo" early
-山 “shān" mountain
+你 你 "nǐ" you
+好 好 "hǎo" okay
+我 我 "wǒ" me
+的 的 "de" of
+他 他 "tā" him
+不 不 "bù" no
+天 天 "tiān" day
+水 水 "shuǐ" water
+火 火 "huǒ" fire
+土 土 "tǔ" dirt
+中 中 "zhōng" middle
+上 上 “shàng" up
+下 下“xià" down
+白 白 "bái" white
+黑 黑 "hēi" black
+車 车 “chē" car
+早 早"zǎo" early
+山 山 “shān" mountain
 Level 2
-要 "yào" want
-成 "chéng" become
-鬼 “guǐ" ghost
-請 “qǐng" please
-紙 "zhǐ" paper
-快 “kuài" fast
-慢 “màn" slow
-球 “qiú" ball
-飛 “fēi" fly
-掃 "sǎo" sweep
-湯 “tāng" soup
-喝 "hē" drink
-真的 "zhēn de" real
-中文 "zhōng wén" Chinese
-英文 “yīng wén“ English
-美國 “měi guó" America
-我的 “wǒ de" mine
-他的 “tā de" his
-你的 “nǐ de" your(s)
-你好 “nǐ hǎo" hello
-再見 ”zài jiàn" goodbye
-開心 “kāi xīn" happy
+要 要 "yào" want
+成 成 "chéng" become
+鬼 鬼 “guǐ" ghost
+請 请 “qǐng" please
+紙 纸 "zhǐ" paper
+快 快 “kuài" fast
+慢 慢“màn" slow
+球 球 “qiú" ball
+飛 飞 “fēi" fly
+掃 扫 "sǎo" sweep
+湯 汤 “tāng" soup
+喝 喝 "hē" drink
+真的 真的 "zhēn de" real
+中文 中文 "zhōng wén" Chinese
+英文 英文 “yīng wén“ English
+我的 我的 “wǒ de" mine
+他的 他的 “tā de" his
+你的 你的 “nǐ de" your(s)
+你好 你好 “nǐ hǎo" hello
+再見 再见 ”zài jiàn" goodbye
+開心 开心 “kāi xīn" happy
 Level 3
-美國 “měi guó" America
-加州 "jiā zhōu" California
-功課 “gōng kè" homework
-餃子 "jiǎo zǐ" dumpling
-電腦 “diàn nǎo" computer
-餅乾 “bǐng gān" cookie
-學校 “xué xiào" school
-考試 “kǎo shì" test
-睡覺 "shuì jiào" sleep
-猴子 “hóu zǐ" monkey
-青蛙 “qīng wā" frog
-家庭 “iā tíng“ household
-難過 “nán guò" sad
-奇怪 ”qí guài“ weird
+美國 美国 “měi guó" America
+加州 加州 "jiā zhōu" California
+功課 功课 “gōng kè" homework
+餃子 饺子 "jiǎo zǐ" dumpling
+電腦 电脑 “diàn nǎo" computer
+餅乾 饼干 “bǐng gān" cookie
+學校 学校 “xué xiào" school
+考試 考试 “kǎo shì" test
+睡覺 睡觉 "shuì jiào" sleep
+猴子 猴子 “hóu zǐ" monkey
+青蛙 青蛙 “qīng wā" frog
+家庭 家庭 “iā tíng“ household
+難過 难过 “nán guò" sad
+奇怪 奇怪 ”qí guài“ weird
