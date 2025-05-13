@@ -44,7 +44,7 @@ class GamePanel extends BasePanel
 
         correctPanel = new JPanel(); // panel that should hold the label
 
-        JButton home = new JButton("home");
+        JButton home = new JButton("Home");
         HomeButtonListener hbl = new HomeButtonListener();
 
         home.addActionListener(hbl);
@@ -126,7 +126,7 @@ class GamePanel extends BasePanel
         public void actionPerformed(ActionEvent evt)
         {
             String command = evt.getActionCommand();
-            if (command.equals("home"))
+            if (command.equals("Home"))
             {
                 paint.resetBob();
                 paint.repaint();
