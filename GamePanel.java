@@ -8,6 +8,7 @@ import java.awt.Font;
 
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 
@@ -39,6 +40,8 @@ class GamePanel extends BasePanel
         submit = new JButton("Submit");
         paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
+        
+        Font buttonFont = new Font("Dialog", Font.PLAIN, 30);
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
@@ -46,6 +49,15 @@ class GamePanel extends BasePanel
 
         JButton home = new JButton("Home");
         HomeButtonListener hbl = new HomeButtonListener();
+        
+        JPanel homeButtonPanel = new JPanel(); // JPanel where buttons are placed
+        homeButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 75));
+        homeButtonPanel.setBackground(Color.BLUE);
+        
+        home.setFont(buttonFont); // setting fonts for the buttons
+        submit.setFont(buttonFont);
+        
+        homeButtonPanel.add(home);
 
         home.addActionListener(hbl);
         submit.addActionListener(hbl);
@@ -53,7 +65,7 @@ class GamePanel extends BasePanel
         correctPanel.setBackground(Color.WHITE);
         correctLabel.setBackground(Color.WHITE);
         correctPanel.add(correctLabel);
-        getPanel("right").add(home);
+        getPanel("right").add(homeButtonPanel);
         getPanel("right").add(submit);
         getPanel("right").add(correctPanel);
         paint.repaint();

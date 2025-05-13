@@ -10,7 +10,7 @@ import java.io.IOException;
 class FileReader 
 {
     private final int LEVEL1_COUNT = 18; // words that are in each level
-    private final int LEVEL2_COUNT = 22;
+    private final int LEVEL2_COUNT = 21;
     private final int LEVEL3_COUNT = 14;
 
     private String[] wordsList; // list of words from the file "words.txt"
@@ -48,7 +48,7 @@ class FileReader
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
         reader.nextLine(); // skip first line of words.txt
         int counter = 0;
-        for (int i=0; i<=LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++) // loop until words.txt is over
+        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++) // loop until words.txt is over
         {
             String line = reader.nextLine();
             if (line.indexOf("Level") == -1) // check if "level" is read(we skip that part)
