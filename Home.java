@@ -50,12 +50,12 @@ class Home extends BasePanel
 			else if (command.equals("Word Identification"))
 			{
 				bh3.getCards().show(bh3, "game");
-				bh3.setStroke(false);
+				bh3.setDef(false);
 			}
 			else if (command.equals("Definition"))
 			{
 				bh3.getCards().show(bh3, "game");
-				bh3.setStroke(true);
+				bh3.setDef(true);
 			}
 		}
 	}

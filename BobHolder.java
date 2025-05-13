@@ -7,10 +7,10 @@ import javax.swing.JPanel;
 class BobHolder extends JPanel
 {
 	private CardLayout cards; // CardLayout variable
-	private boolean isStrokes; // Will define later(used to see if strokes level is chosen)
+	private boolean isDef; // Will define later(used to see if strokes level is chosen)
 	public BobHolder()
 	{
-		isStrokes = false;
+		isDef = false;
 		cards = new CardLayout(); // card layout to hold everything
 		setLayout(cards);
 		Instructions instructions = new Instructions(this); // new instances of classes to use here
@@ -25,14 +25,19 @@ class BobHolder extends JPanel
 		add(game, "game");
 		add(fcards, "cards");
 	}
+
+	public void setDef(boolean defIn)
+	{
+		isDef = defIn;
+	}
+
+	public boolean getDef()
+	{
+		return isDef;
+	}
 	
 	public CardLayout getCards() // get cards because CardHolder is private
 	{
 		return cards;
-	}
-
-	public void setStroke(boolean isStrokeIn)
-	{
-		isStrokes = isStrokeIn;
 	}
 }
