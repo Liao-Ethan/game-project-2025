@@ -48,7 +48,7 @@ class FileReader
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
         reader.nextLine(); // skip first line of words.txt
         int counter = 0;
-        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++) // loop until words.txt is over
+        for (int i=0; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT + 2; i++) // loop until words.txt is over
         {
             String line = reader.nextLine();
             if (line.indexOf("Level") == -1) // check if "level" is read(we skip that part)
@@ -123,5 +123,10 @@ class FileReader
         {
             return LEVEL3_COUNT;
         }
+    }
+
+    public String[] getWords()
+    {
+        return wordsList;
     }
 }

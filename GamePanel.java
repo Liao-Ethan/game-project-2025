@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -30,7 +32,7 @@ class GamePanel extends BasePanel
     private JPanel correctPanel;
     private JLabel correctLabel;
     private FileReader fReader;
-    private JLabel questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
+    private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
 
     private int whichPad;
     private int level;
@@ -70,8 +72,13 @@ class GamePanel extends BasePanel
         homeButtonPanel.add(home);
         secondButtonPanel.add(submit);
 
-        questionLabel = new JLabel();
+        questionLabel = new JTextArea();
         questionLabel.setFont(labelFont);
+        questionLabel.setForeground(Color.WHITE);
+        questionLabel.setBackground(Color.BLUE);
+        questionLabel.setEditable(false);
+        questionLabel.setLineWrap(true);
+        questionLabel.setWrapStyleWord(true);
         getPanel("left").add(questionLabel);
 
         home.addActionListener(hbl);
@@ -90,8 +97,7 @@ class GamePanel extends BasePanel
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
         whichPad = -1;
-        idx = 0;
-        setQuestion(questions[idx]);
+        proceedQuestion(false);
     }
 
     public Font loadFont()
@@ -171,8 +177,7 @@ class GamePanel extends BasePanel
     {
         correctLabel.setForeground(Color.GREEN);
         correctLabel.setText("Correct");
-        idx++;
-        setQuestion(questions[idx]);
+        proceedQuestion(true);
     }
 
     class HomeButtonListener implements ActionListener // button handler to check which button is pressed
@@ -195,6 +200,11 @@ class GamePanel extends BasePanel
         }
     }
 
+    public FileReader getFReader()
+    {
+        return fReader;
+    }
+
     public String[] getQuestions()
     {
         return questions;
@@ -205,17 +215,25 @@ class GamePanel extends BasePanel
         return idx;
     }
 
+    public void proceedQuestion(boolean nextQ)
+    {
+        if (nextQ)
+        {
+            idx++;
+        }
+        setQuestion(questions[idx]);
+    }
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
         
         if (bh5.getDef() == false)
         {
-            questionLabel.setText(question.substring(question.lastIndexOf(" ")));
+            questionLabel.setText("Which character means: " + question.substring(question.lastIndexOf(" ")));
         }
         else
         {
-            questionLabel.setText(question.substring(0, question.indexOf(" ")));
+            questionLabel.setText("What does this mean: " + question.substring(0, question.indexOf(" ")));
         }
 
         String[] sentList = new String[4];

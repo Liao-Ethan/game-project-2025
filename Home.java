@@ -51,11 +51,13 @@ class Home extends BasePanel
 			{
 				bh3.getCards().show(bh3, "game");
 				bh3.setDef(false);
+				bh3.getGamePage().proceedQuestion(false);
 			}
 			else if (command.equals("Definition"))
 			{
 				bh3.getCards().show(bh3, "game");
 				bh3.setDef(true);
+				bh3.getGamePage().proceedQuestion(false);
 			}
 		}
 	}

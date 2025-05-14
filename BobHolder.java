@@ -7,23 +7,35 @@ import javax.swing.JPanel;
 class BobHolder extends JPanel
 {
 	private CardLayout cards; // CardLayout variable
-	private boolean isDef; // Will define later(used to see if strokes level is chosen)
+	private boolean isDef; // Will define later(used to see if game mode "definitions" is chosen)
+
+	private Instructions instructions;
+	private Cover cover;
+	private Home home;
+	private GamePanel game;
+	private Flashcards fcards;
+
 	public BobHolder()
 	{
 		isDef = false;
 		cards = new CardLayout(); // card layout to hold everything
 		setLayout(cards);
-		Instructions instructions = new Instructions(this); // new instances of classes to use here
-		Cover cover = new Cover(this);
-		Home home = new Home(this);
-		GamePanel game = new GamePanel(this);
-		Flashcards fcards = new Flashcards(this);
+		instructions = new Instructions(this); // new instances of classes to use here
+		cover = new Cover(this);
+		home = new Home(this);
+		game = new GamePanel(this);
+		fcards = new Flashcards(this);
 
 		add(cover, "cover"); // add the other classes to the cardPanelHolder
 		add(home, "home");
 		add(instructions, "instructions");
 		add(game, "game");
 		add(fcards, "cards");
+	}
+
+	public GamePanel getGamePage()
+	{
+		return game;
 	}
 
 	public void setDef(boolean defIn)
