@@ -47,8 +47,7 @@ class GamePanel extends BasePanel
         add(paint, BorderLayout.CENTER);
         
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
-        // Font labelFont = new Font("Serif", Font.PLAIN, 50); // fonts for labels
-        Font labelFont = getFont();
+        Font labelFont = new Font("Serif", Font.PLAIN, 50); // fonts for labels
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
