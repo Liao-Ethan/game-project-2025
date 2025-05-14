@@ -1,4 +1,4 @@
-/* Ethan Liao and Lorence Tsai
+/* Lorence Tsai
  * BasePanel.java
  */
 

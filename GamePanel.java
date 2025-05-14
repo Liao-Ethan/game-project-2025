@@ -61,10 +61,15 @@ class GamePanel extends BasePanel
         homeButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 75));
         homeButtonPanel.setBackground(Color.BLUE);
         
+        JPanel secondButtonPanel = new JPanel();
+        secondButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 75));
+        secondButtonPanel.setBackground(Color.BLUE);
+        
         home.setFont(buttonFont); // setting fonts for the buttons
         submit.setFont(buttonFont);
         
         homeButtonPanel.add(home);
+        secondButtonPanel.add(submit);
 
         questionLabel = new JLabel();
         questionLabel.setFont(labelFont);
@@ -77,12 +82,12 @@ class GamePanel extends BasePanel
         correctLabel.setBackground(Color.WHITE);
         correctPanel.add(correctLabel);
         getPanel("right").add(homeButtonPanel);
-        getPanel("right").add(submit);
+        getPanel("right").add(secondButtonPanel);
         getPanel("right").add(correctPanel);
         paint.repaint();
 
         fReader = new FileReader("words");
-        level = 2; // initialize the level
+        level = 3; // initialize the level
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
         whichPad = -1;
@@ -269,12 +274,8 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private int yFrog;
     private String[] qStrings;
 
-    private GamePanel gp;
-
-
     public Paint(GamePanel gpIn)
     {
-        gp = gpIn;
         qStrings = new String[4];
         pads = new LilyPad[4];  // Initialize the pads array with 4 elements
         // Initialize each LilyPad object
