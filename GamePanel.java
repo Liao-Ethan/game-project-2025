@@ -86,8 +86,7 @@ class GamePanel extends BasePanel
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
         whichPad = -1;
-        idx = 0;
-        setQuestion(questions[idx]);
+        proceedQuestion(false);
     }
 
     public Font loadFont()
@@ -167,8 +166,7 @@ class GamePanel extends BasePanel
     {
         correctLabel.setForeground(Color.GREEN);
         correctLabel.setText("Correct");
-        idx++;
-        setQuestion(questions[idx]);
+        proceedQuestion(true);
     }
 
     class HomeButtonListener implements ActionListener // button handler to check which button is pressed
@@ -201,6 +199,14 @@ class GamePanel extends BasePanel
         return idx;
     }
 
+    public void proceedQuestion(boolean nextQ)
+    {
+        if (nextQ)
+        {
+            idx++;
+        }
+        setQuestion(questions[idx]);
+    }
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
