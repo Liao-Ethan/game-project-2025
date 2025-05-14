@@ -9,6 +9,8 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
@@ -30,7 +32,7 @@ class GamePanel extends BasePanel
     private JPanel correctPanel;
     private JLabel correctLabel;
     private FileReader fReader;
-    private JLabel questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
+    private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
 
     private int whichPad;
     private int level;
@@ -47,8 +49,8 @@ class GamePanel extends BasePanel
         add(paint, BorderLayout.CENTER);
         
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
-        // Font labelFont = new Font("Serif", Font.PLAIN, 50); // fonts for labels
-        Font labelFont = getFont();
+        Font labelFont = new Font("Serif", Font.PLAIN, 36); // fonts for labels
+        // Font labelFont = getFont();
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
@@ -71,8 +73,13 @@ class GamePanel extends BasePanel
         homeButtonPanel.add(home);
         secondButtonPanel.add(submit);
 
-        questionLabel = new JLabel();
+        questionLabel = new JTextArea();
         questionLabel.setFont(labelFont);
+        questionLabel.setForeground(Color.WHITE);
+        questionLabel.setBackground(Color.BLUE);
+        questionLabel.setEditable(false);
+        questionLabel.setLineWrap(true);
+        questionLabel.setWrapStyleWord(true);
         getPanel("left").add(questionLabel);
 
         home.addActionListener(hbl);
@@ -194,6 +201,11 @@ class GamePanel extends BasePanel
         }
     }
 
+    public FileReader getFReader()
+    {
+        return fReader;
+    }
+
     public String[] getQuestions()
     {
         return questions;
@@ -218,11 +230,11 @@ class GamePanel extends BasePanel
         
         if (bh5.getDef() == false)
         {
-            questionLabel.setText(question.substring(question.lastIndexOf(" ")));
+            questionLabel.setText("Which character means: " + question.substring(question.lastIndexOf(" ")));
         }
         else
         {
-            questionLabel.setText(question.substring(0, question.indexOf(" ")));
+            questionLabel.setText("What does this mean: " + question.substring(0, question.indexOf(" ")));
         }
 
         String[] sentList = new String[4];
