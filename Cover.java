@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -28,16 +29,23 @@ class Cover extends JPanel
 		titleLabel.setBounds(350, 0, 580, 150); // setting location in the nullLayout
 		
 		CoverButtonHandler cbh = new CoverButtonHandler(); // instantiate a new buttonHandler class
-		
+		CoverNameHandler cnh = new CoverNameHandler();
+
+		JTextField name = new JTextField("Enter your name");
+		name.setFont(new Font("serif", Font.BOLD, 16));
+		name.setBounds(560, 200, 160, 40);
+		name.addActionListener(cnh);
+		add(name);
+
 		JButton next = new JButton("Play");
 		next.setFont(new Font("serif", Font.BOLD, 24));
-		next.setBounds(568, 200, 144, 40);
+		next.setBounds(568, 275, 144, 40);
 		next.addActionListener(cbh);
 		add(next);
 		
 		JButton quit = new JButton("Quit");
 		quit.setFont(new Font("serif", Font.BOLD, 24));
-		quit.setBounds(568, 275, 144, 40);
+		quit.setBounds(568, 350, 144, 40);
 		quit.addActionListener(cbh);
 		add(quit);
 	}
@@ -50,12 +58,27 @@ class Cover extends JPanel
 			String command = evt.getActionCommand();
 			if (command.equals("Play"))
 			{
-				bh2.getCards().show(bh2, "home");
+				System.out.println(bh2.getPlayerInfo().getName());
+				if (!bh2.getPlayerInfo().getName().equals(""))
+				{
+					bh2.getCards().show(bh2, "home");
+				}
 			}
 			else if (command.equals("Quit"))
 			{
 				System.exit(0);
 			}
+		}
+	}
+
+	class CoverNameHandler implements ActionListener // button handler to check which button is clicked
+	// and do corresponding actions
+	{
+		public void actionPerformed(ActionEvent evt)
+		{
+			String command = evt.getActionCommand();
+			bh2.getPlayerInfo().setName(command);
+			bh2.getPlayerInfo().checkForFile();
 		}
 	}
 }

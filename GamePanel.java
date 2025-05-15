@@ -221,55 +221,75 @@ class GamePanel extends BasePanel
         {
             idx++;
         }
-        setQuestion(questions[idx]);
+        if (idx < questions.length)
+        {
+            setQuestion(questions[idx]);
+        }
+        else
+        {
+            setQuestion("");
+        }
     }
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
         
-        if (bh5.getDef() == false)
+        if (idx < questions.length)
         {
-            questionLabel.setText("Which character means: " + question.substring(question.lastIndexOf(" ")));
+            if (bh5.getDef() == false)
+            {
+                questionLabel.setText("Which character means: " + question.substring(question.lastIndexOf(" ")));
+            }
+            else
+            {
+                questionLabel.setText("What does this mean: " + question.substring(0, question.indexOf(" ")));
+            }
         }
         else
         {
-            questionLabel.setText("What does this mean: " + question.substring(0, question.indexOf(" ")));
+            questionLabel.setText("You have completed level " + level + ". Please return to the home page.");
         }
 
         String[] sentList = new String[4];
         for (int i = 0; i < sentList.length; i++)
         {
-            if (i == whichPad - 1) // put the correct answer at correct index
-            {
-                if (bh5.getDef() == false)
+            if (idx < questions.length)
+            {    
+                if (i == whichPad - 1) // put the correct answer at correct index
                 {
-                    sentList[i] = question.substring(0, question.indexOf(" "));
+                    if (bh5.getDef() == false)
+                    {
+                        sentList[i] = question.substring(0, question.indexOf(" "));
+                    }
+                    else
+                    {
+                        sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
+                    }
+                    System.out.print(question + " | ");
                 }
                 else
                 {
-                    sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
+                    String alt;
+                    int randomWordIdx;
+                    do {
+                        randomWordIdx = (int)(Math.random() * questions.length);
+                        alt = questions[randomWordIdx];
+                    } while (alt.equals(question));
+                    if (bh5.getDef() == false)
+                    {
+                        sentList[i] = alt.substring(0, alt.indexOf(" "));
+                    }
+                    else
+                    {
+                        sentList[i] = alt.substring(alt.lastIndexOf(" "));
+                    }
+                    System.out.print(questions[randomWordIdx] + " | ");
                 }
-                System.out.print(question + " | ");
             }
             else
             {
-                String alt;
-                int randomWordIdx;
-                do {
-                    randomWordIdx = (int)(Math.random() * questions.length);
-                    alt = questions[randomWordIdx];
-                } while (alt.equals(question));
-                if (bh5.getDef() == false)
-                {
-                    sentList[i] = alt.substring(0, alt.indexOf(" "));
-                }
-                else
-                {
-                    sentList[i] = alt.substring(alt.lastIndexOf(" "));
-                }
-                System.out.print(questions[randomWordIdx] + " | ");
+                sentList[i] = "";
             }
-            
         }
         System.out.println("");
         paint.setQStrings(sentList);

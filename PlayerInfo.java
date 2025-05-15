@@ -10,13 +10,12 @@ public class PlayerInfo
     private int[] levelScores;
     private boolean[] firstTry;
 
-    public PlayerInfo(String nameIn)
+    public PlayerInfo()
     {
-        name = nameIn;
-        firstTry = new boolean[64];
-        levelScores = new int[]{0, 0, 0};
+        reset();
         checkForFile();
     }
+
 
     public void checkForFile()
     {
@@ -26,10 +25,23 @@ public class PlayerInfo
             Scanner input = new Scanner(file);
             levelScores[0] = input.nextInt();
             firstTry[0] = input.nextBoolean();
+
+            System.out.println(levelScores[0]);
         }
         catch(IOException e)
         {
+            System.out.println("File " + name + ".txt doesn't exist.");
         }
+    }
+
+    public String getName()
+    {
+        return name;
+    }
+
+    public void setName(String newName)
+    {
+        name = newName;
     }
 
     public void writeSave()
@@ -39,8 +51,19 @@ public class PlayerInfo
         try
         {
             pw = new PrintWriter(new FileWriter(outFile, false));
-            pw.println(levelScores);
-            pw.println(firstTry);
+            
+            for (int i=0; i<levelScores.length; i++)
+            {
+                pw.print(levelScores[i] + " ");
+            }
+            pw.println("");
+            
+            for (int i=0; i<firstTry.length; i++)
+            {
+                pw.print(firstTry[i] + " ");
+            }
+            pw.println("");
+            
             pw.close();
         }
         catch(IOException e)
@@ -48,5 +71,12 @@ public class PlayerInfo
 			System.err.println("Unable to write to " + name + ".txt");
 			System.exit(3);
         }
+    }
+
+    public void reset()
+    {
+        name = new String("");
+        firstTry = new boolean[64];
+        levelScores = new int[]{0, 0, 0};
     }
 }
