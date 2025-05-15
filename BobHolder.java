@@ -15,6 +15,8 @@ class BobHolder extends JPanel
 	private GamePanel game;
 	private Flashcards fcards;
 
+	private PlayerInfo pInfo;
+
 	public BobHolder()
 	{
 		isDef = false;
@@ -25,12 +27,18 @@ class BobHolder extends JPanel
 		home = new Home(this);
 		game = new GamePanel(this);
 		fcards = new Flashcards(this);
+		pInfo = new PlayerInfo();
 
 		add(cover, "cover"); // add the other classes to the cardPanelHolder
 		add(home, "home");
 		add(instructions, "instructions");
 		add(game, "game");
 		add(fcards, "cards");
+	}
+
+	public PlayerInfo getPlayerInfo()
+	{
+		return pInfo;
 	}
 
 	public GamePanel getGamePage()

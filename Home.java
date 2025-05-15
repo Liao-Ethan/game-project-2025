@@ -16,10 +16,13 @@ class Home extends BasePanel
 		bh3 = bhIn3;
 		// Adding the components to their respective panels
 		JButton instructButton = new JButton("How to Play"); // How to play button
-		add(instructButton);
 		ButtonHandler bHandler = new ButtonHandler(); // Instantiating handler for the button
 		instructButton.addActionListener(bHandler);
 		getPanel("right").add(instructButton);
+
+		JButton lOButton = new JButton("Log Out");
+		lOButton.addActionListener(bHandler);
+		getPanel("right").add(lOButton);
 
 		getPanel("center").setLayout(new GridLayout(1, 4));
 
@@ -42,6 +45,12 @@ class Home extends BasePanel
 			if (command.equals("How to Play"))
 			{
 				bh3.getCards().show(bh3, "instructions");
+			}
+			else if (command.equals("Log Out"))
+			{
+				bh3.getPlayerInfo().writeSave();
+				bh3.getPlayerInfo().reset();
+				bh3.getCards().show(bh3, "cover");
 			}
 			else if (command.equals("Flashcards"))
 			{
