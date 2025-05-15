@@ -93,11 +93,18 @@ class GamePanel extends BasePanel
         paint.repaint();
 
         fReader = new FileReader("words");
-        level = 3; // initialize the level
-        questions = new String[fReader.getLevelLengths(level)];
-        questions = fReader.shuffle(level);
+        
+        newQuestions(1);
         whichPad = -1;
         proceedQuestion(false);
+    }
+
+    public void newQuestions(int levelIn)
+    {
+        level = levelIn; // initialize the level
+        idx = 0;
+        questions = new String[fReader.getLevelLengths(level)];
+        questions = fReader.shuffle(level);
     }
 
     public Font loadFont()

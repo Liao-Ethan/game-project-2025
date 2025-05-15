@@ -89,7 +89,7 @@ class FileReader
         {
             newList = new String[LEVEL3_COUNT];
             for (int i=0; i<LEVEL3_COUNT; i++) {
-                newList[i] = wordsList[i + LEVEL3_COUNT];
+                newList[i] = wordsList[i + LEVEL1_COUNT + LEVEL2_COUNT];
             }
         }
         else

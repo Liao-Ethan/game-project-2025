@@ -57,10 +57,18 @@ import java.awt.event.ActionListener;
            {
                 levelChosen = 2;
            }
-           else
+           else if (buttonPressed.equals("Level 3"))
            {
                 levelChosen = 3;
            }
+           setLevel();
        }
     }
+
+    public void setLevel()
+    {
+          bobLevel.getGamePage().newQuestions(levelChosen);
+          bobLevel.getGamePage().proceedQuestion(false);
+          bobLevel.getCards().show(bobLevel, "game");
+     }
  }
