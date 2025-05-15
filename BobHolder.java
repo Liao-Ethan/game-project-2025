@@ -28,12 +28,14 @@ class BobHolder extends JPanel
 		game = new GamePanel(this);
 		fcards = new Flashcards(this);
 		pInfo = new PlayerInfo();
+		LevelSelector levelSelected = new LevelSelector(this);
 
 		add(cover, "cover"); // add the other classes to the cardPanelHolder
 		add(home, "home");
 		add(instructions, "instructions");
 		add(game, "game");
 		add(fcards, "cards");
+		add(levelSelected, "Level Select");
 	}
 
 	public PlayerInfo getPlayerInfo()
