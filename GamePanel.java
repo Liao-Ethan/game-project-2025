@@ -266,7 +266,9 @@ class GamePanel extends BasePanel
                 {
                     if (bh5.getDef() == false)
                     {
-                        sentList[i] = question.substring(0, question.indexOf(" "));
+						String questionSub = question.substring(question.indexOf(" ")+ 1);
+                        sentList[i] = questionSub.substring(0, questionSub.indexOf(" "));
+                        System.out.println("SentList: " + sentList[i]);
                     }
                     else
                     {
@@ -280,7 +282,7 @@ class GamePanel extends BasePanel
                     int randomWordIdx;
                     do {
                         randomWordIdx = (int)(Math.random() * questions.length);
-                        alt = questions[randomWordIdx];
+                        alt = questions[randomWordIdx].substring(questions[randomWordIdx].indexOf(" ")+1);
                     } while (alt.equals(question));
                     if (bh5.getDef() == false)
                     {
