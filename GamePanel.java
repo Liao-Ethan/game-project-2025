@@ -35,7 +35,7 @@ class GamePanel extends BasePanel
     private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
 
     private int whichPad;
-    private int level;
+    private int level; // the level selected on previous page
     private int idx;
 
     private String[] questions;
