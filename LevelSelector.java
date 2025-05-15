@@ -40,7 +40,7 @@ import java.awt.event.ActionListener;
         levelPanel.add(level2);
         levelPanel.add(level3);
 
-        getPanel("Center").add(levelPanel);
+        getPanel("center").add(levelPanel);
     }
 
     class LevelListener implements ActionListener
@@ -52,14 +52,17 @@ import java.awt.event.ActionListener;
            if (buttonPressed.equals("Level 1"))
            {
                 levelChosen = 1;
+                bobLevel.getCards().show(bobLevel, "game");
            }
            else if (buttonPressed.equals("Level 2"))
            {
                 levelChosen = 2;
+                bobLevel.getCards().show(bobLevel, "game");
            }
            else if (buttonPressed.equals("Level 3"))
            {
                 levelChosen = 3;
+                bobLevel.getCards().show(bobLevel, "game");
            }
            setLevel();
        }
