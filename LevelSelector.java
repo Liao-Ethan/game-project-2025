@@ -39,6 +39,8 @@ import java.awt.event.ActionListener;
         levelPanel.add(level1);
         levelPanel.add(level2);
         levelPanel.add(level3);
+
+        getPanel("Center").add(levelPanel);
     }
 
     class LevelListener implements ActionListener
