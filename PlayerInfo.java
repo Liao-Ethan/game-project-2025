@@ -79,4 +79,9 @@ public class PlayerInfo
         firstTry = new boolean[64];
         levelScores = new int[]{0, 0, 0};
     }
+
+    public void setScore(int levelIn, int newScore)
+    {
+        levelScores[levelIn-1] = Math.max(levelScores[levelIn-1], newScore);
+    }
 }

@@ -37,6 +37,7 @@ class GamePanel extends BasePanel
     private int whichPad;
     private int level; // the level selected on previous page
     private int idx;
+    private int correctIdx;
 
     private String[] questions;
 
@@ -49,7 +50,7 @@ class GamePanel extends BasePanel
         add(paint, BorderLayout.CENTER);
         
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
-        Font labelFont = new Font("Serif", Font.PLAIN, 50); // fonts for labels
+        Font labelFont = new Font("Serif", Font.PLAIN, 36); // fonts for labels
 
         correctLabel = new JLabel(); // label on the side showing if correct or not
 
@@ -103,6 +104,7 @@ class GamePanel extends BasePanel
     {
         level = levelIn; // initialize the level
         idx = 0;
+        correctIdx = 0;
         questions = new String[fReader.getLevelLengths(level)];
         questions = fReader.shuffle(level);
     }
@@ -175,6 +177,7 @@ class GamePanel extends BasePanel
         {
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
+            proceedQuestion(true);
         }
         paint.resetBob(); // reset frog(bob) to original location
         paint.repaint();
@@ -184,6 +187,7 @@ class GamePanel extends BasePanel
     {
         correctLabel.setForeground(Color.GREEN);
         correctLabel.setText("Correct");
+        correctIdx++;
         proceedQuestion(true);
     }
 
@@ -235,27 +239,33 @@ class GamePanel extends BasePanel
         else
         {
             setQuestion("");
+            bh5.getPlayerInfo().setScore(level, correctIdx);
         }
     }
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
         
+        String labelText = "";
         if (idx < questions.length)
         {
             if (bh5.getDef() == false)
             {
-                questionLabel.setText("Which character means: " + question.substring(question.lastIndexOf(" ")));
+                labelText = "Which character means:\n" + question.substring(question.lastIndexOf(" "));
             }
             else
             {
-                questionLabel.setText("What does this mean: " + question.substring(0, question.indexOf(" ")));
+                labelText = "What does this mean: " + question.substring(0, question.indexOf(" "));
             }
         }
         else
         {
-            questionLabel.setText("You have completed level " + level + ". Please return to the home page.");
+            labelText = "You have completed level " + level + ". Please return to the home page.";
         }
+
+        labelText += "\n\nScore: " + correctIdx + " / " + idx;
+
+        questionLabel.setText(labelText);
 
         String[] sentList = new String[4];
         for (int i = 0; i < sentList.length; i++)
