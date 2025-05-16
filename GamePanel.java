@@ -187,6 +187,7 @@ class GamePanel extends BasePanel
     {
         correctLabel.setForeground(Color.GREEN);
         correctLabel.setText("Correct");
+        bh5.getPlayerInfo().switchCorrect(level, questions[idx]);
         correctIdx++;
         proceedQuestion(true);
     }
@@ -278,13 +279,13 @@ class GamePanel extends BasePanel
                     {
 						String questionSub = question.substring(question.indexOf(" ")+ 1);
                         sentList[i] = questionSub.substring(0, questionSub.indexOf(" "));
-                        System.out.println("SentList: " + sentList[i]);
+                        // System.out.println("SentList: " + sentList[i]);
                     }
                     else
                     {
                         sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
                     }
-                    System.out.print(question + " | ");
+                    // System.out.print(question + " | ");
                 }
                 else
                 {
@@ -302,7 +303,7 @@ class GamePanel extends BasePanel
                     {
                         sentList[i] = alt.substring(alt.lastIndexOf(" "));
                     }
-                    System.out.print(questions[randomWordIdx] + " | ");
+                    //System.out.print(questions[randomWordIdx] + " | ");
                 }
             }
             else
@@ -310,7 +311,7 @@ class GamePanel extends BasePanel
                 sentList[i] = "";
             }
         }
-        System.out.println("");
+        //System.out.println("");
         paint.setQStrings(sentList);
     }
 

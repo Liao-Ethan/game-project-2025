@@ -27,8 +27,8 @@ class BobHolder extends JPanel
 		cover = new Cover(this);
 		home = new Home(this);
 		game = new GamePanel(this);
-		fcards = new Flashcards(this);
 		pInfo = new PlayerInfo();
+		fcards = new Flashcards(this);
 		lSelect = new LevelSelector(this);
 
 
@@ -43,6 +43,11 @@ class BobHolder extends JPanel
 	public PlayerInfo getPlayerInfo()
 	{
 		return pInfo;
+	}
+
+	public Flashcards getFlashcards()
+	{
+		return fcards;
 	}
 
 	public GamePanel getGamePage()

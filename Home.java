@@ -55,6 +55,7 @@ class Home extends BasePanel
 			else if (command.equals("Flashcards"))
 			{
 				bh3.getCards().show(bh3, "cards");
+				bh3.getFlashcards().resetCards();
 			}
 			else if (command.equals("Word Identification"))
 			{

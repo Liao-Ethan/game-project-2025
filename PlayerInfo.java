@@ -10,10 +10,18 @@ public class PlayerInfo
     private int[] levelScores;
     private boolean[] firstTry;
 
+    private final int LEVEL1_COUNT = 18; // words that are in each level
+    private final int LEVEL2_COUNT = 21;
+    private final int LEVEL3_COUNT = 14;
+
+
     public PlayerInfo()
     {
+        name = new String("");
+        firstTry = new boolean[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
+        levelScores = new int[]{0, 0, 0};
         reset();
-        checkForFile();
+        // checkForFile();
     }
 
 
@@ -23,9 +31,15 @@ public class PlayerInfo
         try
         {
             Scanner input = new Scanner(file);
-            levelScores[0] = input.nextInt();
-            firstTry[0] = input.nextBoolean();
-
+            for (int i=0; i<levelScores.length; i++)
+            {
+                levelScores[i] = input.nextInt();
+            }
+            for (int i=0; i<levelScores.length; i++)
+            {
+                firstTry[i] = input.nextBoolean();
+            }
+            
             System.out.println(levelScores[0]);
         }
         catch(IOException e)
@@ -76,12 +90,38 @@ public class PlayerInfo
     public void reset()
     {
         name = new String("");
-        firstTry = new boolean[64];
-        levelScores = new int[]{0, 0, 0};
+        
+        for (int i=0; i<firstTry.length; i++)
+        {
+            firstTry[i]=false;
+        }
+        for (int i=0; i<levelScores.length; i++)
+        {
+            levelScores[i] = 0;
+        }
     }
 
     public void setScore(int levelIn, int newScore)
     {
         levelScores[levelIn-1] = Math.max(levelScores[levelIn-1], newScore);
+    }
+
+    public void switchCorrect(int levelIn, String question)
+    {
+        int idxAdder = 0;
+        if (levelIn == 2)
+        {
+            idxAdder = LEVEL1_COUNT;
+        }
+        else if (levelIn == 3)
+        {
+            idxAdder = LEVEL1_COUNT + LEVEL2_COUNT;
+        }
+        firstTry[idxAdder + Integer.parseInt(question.substring(0, question.indexOf(" ")))] = true; 
+    }
+
+    public boolean getCorrect(int idx)
+    {
+        return firstTry[idx];
     }
 }

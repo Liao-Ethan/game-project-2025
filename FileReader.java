@@ -38,7 +38,7 @@ class FileReader
         }
         catch (FileNotFoundException e)
         {
-            System.out.println("\n\nFile " + name + ".txt does not exist.");
+            System.err.println("\n\nFile " + name + ".txt does not exist.");
             System.exit(1);
         }
     }
@@ -57,7 +57,7 @@ class FileReader
                 counter++;
             }
         }
-        System.out.println("counter = " + counter); // for debugging
+        // System.out.println("counter = " + counter); // for debugging
         return words;
     }
 
