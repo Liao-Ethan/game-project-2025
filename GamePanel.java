@@ -256,7 +256,8 @@ class GamePanel extends BasePanel
             }
             else
             {
-                labelText = "What does this mean: " + question.substring(0, question.indexOf(" "));
+				String firstWord = question.substring(question.indexOf(" ")+1);
+                labelText = "What does this mean: " + firstWord.substring(0, firstWord.indexOf(" "));
             }
         }
         else
