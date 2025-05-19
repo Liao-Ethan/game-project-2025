@@ -14,12 +14,14 @@ import javax.swing.JPanel;
 public class LilyPad extends ImageHolder
 {
     private String text;
+    private float fontSize;
     public LilyPad(JPanel panelIn, int xIn, int yIn)
     {
         super(1, panelIn, "LilyPad", xIn, yIn);
         setFrameBounds(0, 0);
         getImages();
         text = "";
+        fontSize = 50f;
     }
 
     public void setWord(String question)
@@ -36,7 +38,7 @@ public class LilyPad extends ImageHolder
         try 
         {
             //create the font to use. Specify the size!
-            chineseFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName)).deriveFont(50f);
+            chineseFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName)).deriveFont(fontSize);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(chineseFont);

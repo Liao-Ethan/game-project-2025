@@ -117,7 +117,7 @@ public class PlayerInfo
         {
             idxAdder = LEVEL1_COUNT + LEVEL2_COUNT;
         }
-        firstTry[idxAdder + Integer.parseInt(question.substring(0, question.indexOf(" ")))] = true; 
+        firstTry[idxAdder + Integer.parseInt(question.substring(0, question.indexOf(" "))) - 1] = true; 
     }
 
     public boolean getCorrect(int idx)
