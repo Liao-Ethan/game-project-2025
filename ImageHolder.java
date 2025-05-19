@@ -22,7 +22,8 @@ class ImageHolder extends JPanel
     private JPanel panel; // Parent panel, what we are drawing on
     private int coords[]; // Coordinates
     private int imgWidth, imgHeight;
-    public ImageHolder(int framesIn, JPanel panelIn, String nameIn, int xIn, int yIn) {
+    public ImageHolder(int framesIn, JPanel panelIn, String nameIn, int xIn, int yIn) 
+    {
         img = new Image[framesIn];
         panel = panelIn;
         idx = 0;

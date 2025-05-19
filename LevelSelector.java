@@ -7,6 +7,7 @@ import java.awt.Font;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -18,6 +19,10 @@ import java.awt.event.ActionListener;
  {
     private int levelChosen;
     private BobHolder bobLevel;
+    
+    private JCheckBox level1; // checkboxes to choose level
+	private JCheckBox level2;
+	private JCheckBox level3;
 
     public LevelSelector(BobHolder bobLevelIn)
     {
@@ -28,9 +33,9 @@ import java.awt.event.ActionListener;
 
         LevelListener levelListener = new LevelListener();
 
-        JButton level1 = new JButton("Level 1");
-        JButton level2 = new JButton("Level 2");
-        JButton level3 = new JButton("Level 3");
+        level1 = new JCheckBox("Level 1");
+        level2 = new JCheckBox("Level 2");
+        level3 = new JCheckBox("Level 3");
 
         level1.addActionListener(levelListener);
         level2.addActionListener(levelListener);
@@ -53,16 +58,19 @@ import java.awt.event.ActionListener;
            {
                 levelChosen = 1;
                 bobLevel.getCards().show(bobLevel, "game");
+                level1.setSelected(false);
            }
            else if (buttonPressed.equals("Level 2"))
            {
                 levelChosen = 2;
                 bobLevel.getCards().show(bobLevel, "game");
+                level2.setSelected(false);
            }
-           else if (buttonPressed.equals("Level 3"))
+           else
            {
                 levelChosen = 3;
                 bobLevel.getCards().show(bobLevel, "game");
+                level3.setSelected(false);
            }
            setLevel();
        }
