@@ -30,12 +30,17 @@ import java.awt.event.ActionListener;
         bobLevel = bobLevelIn;
         JPanel levelPanel = new JPanel();
         levelPanel.setLayout(new GridLayout(0, 3));
+        Font font = new Font("serif", Font.PLAIN, 48);
 
         LevelListener levelListener = new LevelListener();
 
         level1 = new JCheckBox("Level 1");
         level2 = new JCheckBox("Level 2");
         level3 = new JCheckBox("Level 3");
+
+        level1.setFont(font);
+        level2.setFont(font);
+        level3.setFont(font);
 
         level1.addActionListener(levelListener);
         level2.addActionListener(levelListener);

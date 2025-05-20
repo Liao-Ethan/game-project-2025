@@ -79,7 +79,6 @@ class BobHolder extends JPanel
 
 	public boolean getSimplified()
 	{
-		System.out.println(simplified);
 		return simplified;
 	}
 }

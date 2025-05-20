@@ -27,7 +27,6 @@ public class LilyPad extends ImageHolder
     public void setWord(String question)
     {
         text = question.substring(0, question.indexOf(" "));
-        // System.out.println("Text = " + text);
     }
 
     public Font loadFont()

@@ -57,7 +57,6 @@ class FileReader
                 counter++;
             }
         }
-        // System.out.println("counter = " + counter); // for debugging
         return words;
     }
 

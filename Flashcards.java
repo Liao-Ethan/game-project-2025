@@ -48,7 +48,6 @@ public class Flashcards extends BasePanel // inherits from BasePanel
             {
                 fullText = fullText.substring(fullText.indexOf(" ")+1);
             }
-            //System.out.println("Fulltext: " + fullText);
             
             JLabel chineseText = new JLabel();
             chineseText.setText(fullText.substring(0, fullText.indexOf(" ")));
@@ -71,7 +70,6 @@ public class Flashcards extends BasePanel // inherits from BasePanel
         for (int i=0; i<cards.length; i++)
         {
             boolean isCorrect = bh7.getPlayerInfo().getCorrect(i);
-            // System.out.println(fReader.getWords()[i] + " = " + isCorrect);
             if (isCorrect == false)
             {
                 cards[i].setBackground(Color.RED);

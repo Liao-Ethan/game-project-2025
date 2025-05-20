@@ -276,7 +276,7 @@ class GamePanel extends BasePanel
     public void setQuestion(String question)
     {
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
-        
+        question = question.substring(question.indexOf(" ")+1);
         String labelText = "";
         if (bh5.getSimplified() == true)
         {
@@ -290,8 +290,8 @@ class GamePanel extends BasePanel
             }
             else
             {
-                String firstWord = question.substring(question.indexOf(" ")+1);
-                labelText = "What does this mean: " + firstWord.substring(0, firstWord.indexOf(" "));
+                // String firstWord = question.substring(question.indexOf(" ")+1);
+                labelText = "What does this mean: " + question.substring(0, question.indexOf(" "));
             }
         }
         else
@@ -312,16 +312,13 @@ class GamePanel extends BasePanel
                 {
                     if (bh5.getDef() == false)
                     {
-                        System.out.println(question);
-						String questionSub = question.substring(question.indexOf(" ")+ 1);
-                        sentList[i] = questionSub.substring(0, questionSub.indexOf(" "));
-                        // System.out.println("SentList: " + sentList[i]);
+						// String questionSub = question.substring(question.indexOf(" ")+ 1);
+                        sentList[i] = question.substring(0, question.indexOf(" "));
                     }
                     else
                     {
                         sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
                     }
-                    // System.out.print(question + " | ");
                 }
                 else
                 {
@@ -331,13 +328,14 @@ class GamePanel extends BasePanel
                     {
                         randomWordIdx = (int)(Math.random() * questions.length);
                         alt = questions[randomWordIdx].substring(questions[randomWordIdx].indexOf(" ")+1);
+                        if (bh5.getSimplified() == true)
+                        {
+                            alt = alt.substring(alt.indexOf(" ") + 1);
+                        }
+
                     } while (alt.equals(question));
                     
-                    if (bh5.getSimplified() == true)
-                    {
-                        alt = alt.substring(alt.indexOf(" ") + 1);
-
-                    }
+                    
                     if (bh5.getDef() == false)
                     {
                         sentList[i] = alt.substring(0, alt.indexOf(" "));
@@ -346,7 +344,6 @@ class GamePanel extends BasePanel
                     {
                         sentList[i] = alt.substring(alt.lastIndexOf(" "));
                     }
-                    //System.out.print(questions[randomWordIdx] + " | ");
                 }
             }
             else
@@ -354,7 +351,6 @@ class GamePanel extends BasePanel
                 sentList[i] = "";
             }
         }
-        //System.out.println("");
         paint.setQStrings(sentList);
     }
 
