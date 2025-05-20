@@ -1,6 +1,7 @@
 /* LevelSelector.java
  */
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 
@@ -24,6 +25,8 @@ import java.awt.event.ActionListener;
 	private JCheckBox level2;
 	private JCheckBox level3;
 
+    private JLabel notif;
+
     public LevelSelector(BobHolder bobLevelIn)
     {
         super(bobLevelIn, "Level Select");
@@ -37,6 +40,11 @@ import java.awt.event.ActionListener;
         level1 = new JCheckBox("Level 1");
         level2 = new JCheckBox("Level 2");
         level3 = new JCheckBox("Level 3");
+        
+        notif = new JLabel("Please select a level.", JLabel.CENTER);
+        notif.setFont(new Font("serif", Font.PLAIN, 36));
+        notif.setForeground(Color.BLACK);
+        add(notif, BorderLayout.SOUTH);
 
         level1.setFont(font);
         level2.setFont(font);
@@ -64,20 +72,40 @@ import java.awt.event.ActionListener;
                 levelChosen = 1;
                 bobLevel.getCards().show(bobLevel, "game");
                 level1.setSelected(false);
+                setLevel();
            }
            else if (buttonPressed.equals("Level 2"))
            {
-                levelChosen = 2;
-                bobLevel.getCards().show(bobLevel, "game");
+                if (bobLevel.getPlayerInfo().isComplete(2))
+                {
+                    levelChosen = 2;
+                    bobLevel.getCards().show(bobLevel, "game");
+                    
+                    setLevel();
+                }
+                else
+                {
+                    notif.setText("Please get everything correct in level 1 before proceeding.");
+                    notif.setForeground(Color.ORANGE);
+                }
                 level2.setSelected(false);
            }
            else
            {
-                levelChosen = 3;
-                bobLevel.getCards().show(bobLevel, "game");
-                level3.setSelected(false);
+                if (bobLevel.getPlayerInfo().isComplete(3))
+                {
+                    levelChosen = 3;
+                    bobLevel.getCards().show(bobLevel, "game");
+                    level3.setSelected(false);
+                    setLevel();
+                }
+                else
+                {
+                    notif.setText("Please get everything correct in level 2 before proceeding.");
+                    notif.setForeground(Color.ORANGE);
+                }
            }
-           setLevel();
+           
        }
     }
 
@@ -86,5 +114,8 @@ import java.awt.event.ActionListener;
           bobLevel.getGamePage().newQuestions(levelChosen);
           bobLevel.getGamePage().proceedQuestion(false);
           bobLevel.getCards().show(bobLevel, "game");
+
+          notif.setText("Please select a level.");
+          notif.setForeground(Color.BLACK);
      }
  }

@@ -105,6 +105,46 @@ public class PlayerInfo
         levelScores[levelIn-1] = Math.max(levelScores[levelIn-1], newScore);
     }
 
+    public boolean isComplete(int levelIn)
+    {
+        levelIn--;
+        if (levelIn == 0)
+        {
+            if (levelScores[levelIn] == LEVEL1_COUNT)
+            {
+                return true;
+            }  
+            else
+            {
+                return false;
+            }
+        }
+        else 
+        if (levelIn == 1)
+        {
+            if (levelScores[levelIn] == LEVEL2_COUNT)
+            {
+                return true;
+            }  
+            else
+            {
+                return false;
+            }
+        }
+        else if (levelIn == 2)
+        {
+            if (levelScores[levelIn] == LEVEL3_COUNT)
+            {
+                return true;
+            }  
+            else
+            {
+                return false;
+            }
+        }
+        return false;
+    }
+
     public void switchCorrect(int levelIn, String question)
     {
         int idxAdder = 0;
