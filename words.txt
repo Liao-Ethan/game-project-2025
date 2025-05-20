@@ -11,7 +11,7 @@ Level 1
 10 土 土 "tǔ" dirt
 11 中 中 "zhōng" middle
 12 上 上 “shàng" up
-13 下 下“xià" down
+13 下 下 “xià" down
 14 白 白 "bái" white
 15 黑 黑 "hēi" black
 16 車 车 “chē" car

@@ -333,6 +333,14 @@ class GamePanel extends BasePanel
                             alt = alt.substring(alt.indexOf(" ") + 1);
                         }
 
+                        for (int j=0; j<sentList.length; j++)
+                        {
+                            if (alt.equals(sentList[i]))
+                            {
+                                alt = question;
+                            }
+                        }
+
                     } while (alt.equals(question));
                     
                     
