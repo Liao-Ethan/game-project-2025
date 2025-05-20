@@ -149,7 +149,8 @@ class GamePanel extends BasePanel
             e.printStackTrace();
             System.exit(2);
         } 
-        catch(FontFormatException e) {
+        catch(FontFormatException e) 
+        {
             System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
             e.printStackTrace();
             System.exit(3);
