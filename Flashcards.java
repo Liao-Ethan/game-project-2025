@@ -4,6 +4,7 @@
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -32,8 +33,7 @@ public class Flashcards extends BasePanel // inherits from BasePanel
         getPanel("right").add(home2); // use polymorphism to quickly draw the empty panel for 
         // buttons on the side
         allCards = new JPanel();
-        allCards = new JPanel();
-        allCards.setLayout(new GridLayout(5, 50));
+        allCards.setLayout(new GridLayout(20, 3));
 
         fReader = bh7.getGamePage().getFReader();
         int sum = fReader.getLevelLengths(1) + fReader.getLevelLengths(2) + fReader.getLevelLengths(3);
@@ -41,7 +41,13 @@ public class Flashcards extends BasePanel // inherits from BasePanel
         for (int i=0; i< sum; i++)
         {
             JPanel card = new JPanel();
+            card.setLayout(new FlowLayout(FlowLayout.CENTER, 50, 30));
             String fullText = fReader.getWords()[i];
+            fullText = fullText.substring(fullText.indexOf(" ")+1);
+            if (bh7.getSimplified() == true)
+            {
+                fullText = fullText.substring(fullText.indexOf(" ")+1);
+            }
             //System.out.println("Fulltext: " + fullText);
             
             JLabel chineseText = new JLabel();
@@ -56,7 +62,7 @@ public class Flashcards extends BasePanel // inherits from BasePanel
         
 
         JScrollPane scroller = new JScrollPane(allCards);
-        scroller.setPreferredSize(new Dimension(480, 200));
+        scroller.setPreferredSize(new Dimension(700, 400));
         getPanel("center").add(scroller);
     }
 
@@ -65,14 +71,13 @@ public class Flashcards extends BasePanel // inherits from BasePanel
         for (int i=0; i<cards.length; i++)
         {
             boolean isCorrect = bh7.getPlayerInfo().getCorrect(i);
-            System.out.println(fReader.getWords()[i] + " = " + isCorrect);
+            // System.out.println(fReader.getWords()[i] + " = " + isCorrect);
             if (isCorrect == false)
             {
                 cards[i].setBackground(Color.RED);
             }
             else
             {
-                System.out.println("Banana");
                 cards[i].setBackground(Color.GREEN);
             }
         }

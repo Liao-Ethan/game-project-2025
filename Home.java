@@ -2,10 +2,12 @@
  */
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import java.awt.FlowLayout;
 import java.awt.GridLayout;
 
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
+import javax.swing.JRadioButton;
 
 class Home extends BasePanel
 {
@@ -35,6 +37,39 @@ class Home extends BasePanel
 			getPanel("center").add(menuButtons[i]);
 		}
 		add(getPanel("center"));
+
+		ButtonGroup bg = new ButtonGroup();
+		RBHandler rbHandler = new RBHandler();
+
+
+		getPanel("left").setLayout(new FlowLayout(FlowLayout.CENTER, 100, 30));
+		JRadioButton trad = new JRadioButton("Traditional");
+		trad.addActionListener(rbHandler);
+		getPanel("left").add(trad);
+
+		JRadioButton simp = new JRadioButton("Simplified");
+		simp.addActionListener(rbHandler);
+		getPanel("left").add(simp);
+
+		bg.add(trad);
+		trad.setSelected(true);
+		bg.add(simp);
+	}
+
+	class RBHandler implements ActionListener
+	{
+		public void actionPerformed(ActionEvent evt)
+		{
+			String command = evt.getActionCommand();
+			if (command.equals("Traditional"))
+			{
+				bh3.setSimplified(false);
+			}
+			if (command.equals("Simplified"))
+			{
+				bh3.setSimplified(true);
+			}
+		}
 	}
 	
 	class ButtonHandler implements ActionListener

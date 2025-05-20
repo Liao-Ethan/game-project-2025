@@ -40,7 +40,6 @@ public class PlayerInfo
                 firstTry[i] = input.nextBoolean();
             }
             
-            System.out.println(levelScores[0]);
         }
         catch(IOException e)
         {

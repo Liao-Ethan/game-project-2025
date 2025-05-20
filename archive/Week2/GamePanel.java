@@ -62,13 +62,11 @@ class GamePanel extends BasePanel
 
         if (xCoord >= 50 && xCoord <= 290 && yCoord >= 140 && yCoord <= 380)
         {
-            System.out.println("Correct");
             correctLabel.setForeground(Color.GREEN);
             correctLabel.setText("Correct");
         }
         else
         {
-            System.out.println("Incorrect");
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
         }

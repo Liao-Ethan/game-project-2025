@@ -58,9 +58,9 @@ public class LilyPad extends ImageHolder
         return chineseFont;
     }
 
-    public void drawText(Graphics g, String text)
+    public void drawText(Graphics g, String text, float fontSizeIn)
     {
-        
+        fontSize = fontSizeIn;
         g.setFont(loadFont());
         g.setColor(Color.WHITE);
         g.drawString(text, getX() + 100, getY() + 130);

@@ -5,11 +5,15 @@
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JPanel;
+import javax.swing.JSlider;
 import javax.swing.JTextArea;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -33,11 +37,13 @@ class GamePanel extends BasePanel
     private JLabel correctLabel;
     private FileReader fReader;
     private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
+    private JSlider fontSlider;
 
     private int whichPad;
     private int level; // the level selected on previous page
     private int idx;
     private int correctIdx;
+    private float fontSize;
 
     private String[] questions;
 
@@ -73,6 +79,8 @@ class GamePanel extends BasePanel
         homeButtonPanel.add(home);
         secondButtonPanel.add(submit);
 
+        getPanel("left").setLayout(new GridLayout(2, 1));
+
         questionLabel = new JTextArea();
         questionLabel.setFont(labelFont);
         questionLabel.setForeground(Color.WHITE);
@@ -98,6 +106,19 @@ class GamePanel extends BasePanel
         newQuestions(1);
         whichPad = -1;
         proceedQuestion(false);
+
+        fontSize = 50f;
+
+        SliderHandler sHandler = new SliderHandler();
+
+        fontSlider = new JSlider(10, 100, 50);
+        fontSlider.setMajorTickSpacing(10);	// create tick marks on slider every 5 units
+        fontSlider.setPaintTicks(true);
+        fontSlider.setLabelTable(fontSlider.createStandardLabels(20)); // create labels on tick marks
+        fontSlider.setPaintLabels(true);
+        fontSlider.addChangeListener(sHandler);
+        fontSlider.setBackground(Color.BLUE);
+        getPanel("left").add(fontSlider);
     }
 
     public void newQuestions(int levelIn)
@@ -191,7 +212,15 @@ class GamePanel extends BasePanel
         correctIdx++;
         proceedQuestion(true);
     }
+    class SliderHandler implements ChangeListener
+    {
 
+        public void stateChanged(ChangeEvent evt) 
+        {
+            fontSize = (float)fontSlider.getValue();
+            paint.repaint();
+        }
+    }
     class HomeButtonListener implements ActionListener // button handler to check which button is pressed
     // and perform corresponding action
     {
@@ -248,6 +277,10 @@ class GamePanel extends BasePanel
         whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
         
         String labelText = "";
+        if (bh5.getSimplified() == true)
+        {
+            question = question.substring(question.indexOf(" ")+1);
+        }
         if (idx < questions.length)
         {
             if (bh5.getDef() == false)
@@ -256,7 +289,7 @@ class GamePanel extends BasePanel
             }
             else
             {
-				String firstWord = question.substring(question.indexOf(" ")+1);
+                String firstWord = question.substring(question.indexOf(" ")+1);
                 labelText = "What does this mean: " + firstWord.substring(0, firstWord.indexOf(" "));
             }
         }
@@ -278,6 +311,7 @@ class GamePanel extends BasePanel
                 {
                     if (bh5.getDef() == false)
                     {
+                        System.out.println(question);
 						String questionSub = question.substring(question.indexOf(" ")+ 1);
                         sentList[i] = questionSub.substring(0, questionSub.indexOf(" "));
                         // System.out.println("SentList: " + sentList[i]);
@@ -292,10 +326,17 @@ class GamePanel extends BasePanel
                 {
                     String alt;
                     int randomWordIdx;
-                    do {
+                    do 
+                    {
                         randomWordIdx = (int)(Math.random() * questions.length);
                         alt = questions[randomWordIdx].substring(questions[randomWordIdx].indexOf(" ")+1);
                     } while (alt.equals(question));
+                    
+                    if (bh5.getSimplified() == true)
+                    {
+                        alt = alt.substring(alt.indexOf(" ") + 1);
+
+                    }
                     if (bh5.getDef() == false)
                     {
                         sentList[i] = alt.substring(0, alt.indexOf(" "));
@@ -316,6 +357,11 @@ class GamePanel extends BasePanel
         paint.setQStrings(sentList);
     }
 
+    public float getFontSize()
+    {
+        return fontSize;
+    }
+
 }
 
 class Paint extends JPanel implements MouseMotionListener, MouseListener
@@ -326,8 +372,11 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private int yFrog;
     private String[] qStrings;
 
+    private GamePanel gp;
+
     public Paint(GamePanel gpIn)
     {
+        gp = gpIn;
         qStrings = new String[4];
         pads = new LilyPad[4];  // Initialize the pads array with 4 elements
         // Initialize each LilyPad object
@@ -382,7 +431,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
                 int padIndex = i * 2 + j;
                 pads[padIndex] = new LilyPad(this, 50 + (j * 360), 140 + (i * 240));
                 pads[padIndex].drawImage(g);
-                pads[padIndex].drawText(g, qStrings[padIndex]);
+                pads[padIndex].drawText(g, qStrings[padIndex], gp.getFontSize());
             }
         }
 

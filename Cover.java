@@ -58,7 +58,6 @@ class Cover extends JPanel
 			String command = evt.getActionCommand();
 			if (command.equals("Play"))
 			{
-				System.out.println(bh2.getPlayerInfo().getName());
 				if (!bh2.getPlayerInfo().getName().equals(""))
 				{
 					bh2.getCards().show(bh2, "home");

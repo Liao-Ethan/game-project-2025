@@ -7,7 +7,8 @@ import javax.swing.JPanel;
 class BobHolder extends JPanel
 {
 	private CardLayout cards; // CardLayout variable
-	private boolean isDef; // Will define later(used to see if game mode "definitions" is chosen)
+	private boolean isDef; // used to see if game mode "definitions" is chosen)
+	private boolean simplified;
 
 	private Instructions instructions;
 	private Cover cover;
@@ -21,6 +22,7 @@ class BobHolder extends JPanel
 	public BobHolder()
 	{
 		isDef = false;
+		simplified = false;
 		cards = new CardLayout(); // card layout to hold everything
 		setLayout(cards);
 		instructions = new Instructions(this); // new instances of classes to use here
@@ -68,5 +70,16 @@ class BobHolder extends JPanel
 	public CardLayout getCards() // get cards because CardHolder is private
 	{
 		return cards;
+	}
+
+	public void setSimplified(boolean isSimplified)
+	{
+		simplified = isSimplified;
+	}
+
+	public boolean getSimplified()
+	{
+		System.out.println(simplified);
+		return simplified;
 	}
 }
