@@ -15,7 +15,7 @@ Level 1
 14 白 白 "bái" white
 15 黑 黑 "hēi" black
 16 車 车 “chē" car
-17 早 早"zǎo" early
+17 早 早 "zǎo" early
 18 山 山 “shān" mountain
 Level 2
 1 要 要 "yào" want
@@ -24,7 +24,7 @@ Level 2
 4 請 请 “qǐng" please
 5 紙 纸 "zhǐ" paper
 6 快 快 “kuài" fast
-7 慢 慢“màn" slow
+7 慢 慢 “màn" slow
 8 球 球 “qiú" ball
 9 飛 飞 “fēi" fly
 10 掃 扫 "sǎo" sweep
