@@ -13,6 +13,7 @@ public class BobFrog extends ImageHolder implements MouseListener
         super(6, panelIn, "Bob", xIn, yIn);
         setFrameBounds(0, 3);
         getImages();
+        resetImgDimensions(64, 64);
         
         addMouseListener(this);
     }

@@ -35,8 +35,8 @@ class ImageHolder extends JPanel
         coords = new int[]{xIn, yIn};
         getImages();
         timer.start();
-        imgWidth = img[0].getWidth(panel);
-        imgHeight = img[0].getHeight(panel);
+        imgWidth = 0;
+        imgHeight = 0;
     }
 
     public void getImages()
@@ -96,10 +96,25 @@ class ImageHolder extends JPanel
         {
             coords[0] = 0;
         }
-        else if (coords[0] >= panel.getWidth())
+        else if (coords[0] >= panel.getWidth() - imgWidth)
         {
-            coords[0] = 600;
+            coords[0] = panel.getWidth() - imgWidth;
         }
+
+        if (coords[1] <= 0)
+        {
+            coords[1] = 0;
+        }
+        else if (coords[1] >= panel.getHeight() - imgHeight)
+        {
+            coords[1] = panel.getHeight() - imgHeight;
+        }
+    }
+
+    public void resetImgDimensions(int newWidth, int newHeight)
+    {
+        imgWidth = newWidth;
+        imgHeight = newHeight;
     }
 
     public void killTimer()

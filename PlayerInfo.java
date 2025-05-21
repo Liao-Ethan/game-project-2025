@@ -39,7 +39,7 @@ public class PlayerInfo
             {
                 firstTry[i] = input.nextBoolean();
             }
-            
+            input.close();
         }
         catch(IOException e)
         {
@@ -102,7 +102,6 @@ public class PlayerInfo
 
     public void setScore()
     {
-
         int newScore = 0;
         for (int i=0; i<LEVEL1_COUNT; i++)
         {
