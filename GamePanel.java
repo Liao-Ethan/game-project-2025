@@ -348,6 +348,7 @@ class GamePanel extends BasePanel
                                     if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
                                     {
                                         alt = question;
+                                        j = sentList.length;
                                     }
                                 }
                                 else
@@ -355,6 +356,7 @@ class GamePanel extends BasePanel
                                     if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
                                     {
                                         alt = question;
+                                        j = sentList.length;
                                     }
                                 }
                             }
