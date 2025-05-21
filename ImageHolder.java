@@ -39,6 +39,7 @@ class ImageHolder extends JPanel
         imgHeight = 0;
     }
 
+    // Get all the images and add them to the array img
     public void getImages()
     {
         for(int i = 0; i < img.length; i++)
@@ -56,6 +57,7 @@ class ImageHolder extends JPanel
         }
     }
 
+    // Set bounds so only a set amount of frames are animated
     public void setFrameBounds(int startIn, int endIn)
     {
         start = startIn;
@@ -71,6 +73,7 @@ class ImageHolder extends JPanel
         }
     }
 
+    // Handler for timer, deals with changing the frame
     class TimerHandler implements ActionListener
     {
         public void actionPerformed(ActionEvent evt)
@@ -84,11 +87,13 @@ class ImageHolder extends JPanel
         }
     }
 
+    // Draws the image, used in paintComponent
     public void drawImage(Graphics g)
     {
         g.drawImage(img[idx], coords[0], coords[1], panel);
     }
 
+    // Setting the coordinates of the instance
     public void setCoords(int[] coordsIn)
     {
         coords = coordsIn;
@@ -111,17 +116,20 @@ class ImageHolder extends JPanel
         }
     }
 
+    // Used to manually hardcode image dimensions (used for the program, sometimes not the actual dimensions)
     public void resetImgDimensions(int newWidth, int newHeight)
     {
         imgWidth = newWidth;
         imgHeight = newHeight;
     }
 
+    // End the timer
     public void killTimer()
     {
         timer.stop();
     }
 
+    // Getters for coordinates.
     public int getX()
     {
         return coords[0];
@@ -132,11 +140,13 @@ class ImageHolder extends JPanel
         return coords[1];
     }
 
+    // Getting the parent panel
     public JPanel getParentPanel()
     {
         return panel;
     }
 
+    // Getter setters for image dimensions
     public int getWidth()
     {
         return imgWidth;
@@ -147,6 +157,7 @@ class ImageHolder extends JPanel
         return imgHeight;
     }
 
+    // Get frame idx (animation)
     public int getIdx()
     {
         return idx;

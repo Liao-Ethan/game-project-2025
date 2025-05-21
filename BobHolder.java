@@ -8,16 +8,17 @@ class BobHolder extends JPanel
 {
 	private CardLayout cards; // CardLayout variable
 	private boolean isDef; // used to see if game mode "definitions" is chosen)
-	private boolean simplified;
+	private boolean simplified; // Shows whether the game running with simplified text or no.
 
-	private Instructions instructions;
-	private Cover cover;
-	private Home home;
-	private GamePanel game;
-	private Flashcards fcards;
-	private LevelSelector lSelect;
+	// All the individual cards
+	private Instructions instructions; // Instructions panel
+	private Cover cover; // Cover panel
+	private Home home; // Home panel
+	private GamePanel game; // Game panel
+	private Flashcards fcards; // Flashcards panel
+	private LevelSelector lSelect; // Level selecting panel
 
-	private PlayerInfo pInfo;
+	private PlayerInfo pInfo; // Stores all the player information.
 
 	public BobHolder()
 	{
@@ -25,6 +26,8 @@ class BobHolder extends JPanel
 		simplified = false;
 		cards = new CardLayout(); // card layout to hold everything
 		setLayout(cards);
+
+		// Initialize all panels which will be cards
 		instructions = new Instructions(this); // new instances of classes to use here
 		cover = new Cover(this);
 		home = new Home(this);
@@ -42,6 +45,7 @@ class BobHolder extends JPanel
 		add(lSelect, "select");
 	}
 
+	// Getter setters for important panels
 	public PlayerInfo getPlayerInfo()
 	{
 		return pInfo;
@@ -57,6 +61,12 @@ class BobHolder extends JPanel
 		return game;
 	}
 
+	public Cover getCover()
+	{
+		return cover;
+	}
+	
+	// Getter setters for is it in the game mode "definitions"
 	public void setDef(boolean defIn)
 	{
 		isDef = defIn;
@@ -72,6 +82,7 @@ class BobHolder extends JPanel
 		return cards;
 	}
 
+	// Getter setter for is it in simplified or not
 	public void setSimplified(boolean isSimplified)
 	{
 		simplified = isSimplified;

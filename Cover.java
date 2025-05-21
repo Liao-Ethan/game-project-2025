@@ -15,7 +15,9 @@ import javax.swing.JButton;
 
 class Cover extends JPanel
 {
-	private BobHolder bh2;
+	private BobHolder bh2; // BobHolder instance
+	private JTextField name; // Text field for collecting the name of the player, used for PlayerInfo in the BobHolder class
+	
 	public Cover(BobHolder bhIn)
 	{
 		bh2 = bhIn;
@@ -29,25 +31,34 @@ class Cover extends JPanel
 		titleLabel.setBounds(350, 0, 580, 150); // setting location in the nullLayout
 		
 		CoverButtonHandler cbh = new CoverButtonHandler(); // instantiate a new buttonHandler class
-		CoverNameHandler cnh = new CoverNameHandler();
+		CoverNameHandler cnh = new CoverNameHandler(); // Instantiate a new handler for text field "name"
 
-		JTextField name = new JTextField("Enter your name");
+		// TextField for player's name
+		name = new JTextField("Enter your name");
 		name.setFont(new Font("serif", Font.BOLD, 16));
 		name.setBounds(560, 200, 160, 40);
 		name.addActionListener(cnh);
 		add(name);
 
+		// Button, this one is to progress to the home page
 		JButton next = new JButton("Play");
 		next.setFont(new Font("serif", Font.BOLD, 24));
 		next.setBounds(568, 275, 144, 40);
 		next.addActionListener(cbh);
 		add(next);
 		
+		// Button, this one is to quit the game and close the program.
 		JButton quit = new JButton("Quit");
 		quit.setFont(new Font("serif", Font.BOLD, 24));
 		quit.setBounds(568, 350, 144, 40);
 		quit.addActionListener(cbh);
 		add(quit);
+	}
+
+	// Resets the cover panel to its default states
+	public void reset()
+	{
+		name.setText("Enter your name");
 	}
 	
 	class CoverButtonHandler implements ActionListener // button handler to check which button is clicked
