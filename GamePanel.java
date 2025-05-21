@@ -341,19 +341,21 @@ class GamePanel extends BasePanel
                         // System.out.print("alt: " + alt + " ");
                         for (int j=0; j<sentList.length; j++)
                         {
-                            // System.out.print("response: " + sentList[i] + " | ");
-                            if (bh5.getDef() == false)
+                            if (!alt.equals(question))
                             {
-                                if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
+                                if (bh5.getDef() == false)
                                 {
-                                    alt = question;
+                                    if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
+                                    {
+                                        alt = question;
+                                    }
                                 }
-                            }
-                            else
-                            {
-                                if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
+                                else
                                 {
-                                    alt = question;
+                                    if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
+                                    {
+                                        alt = question;
+                                    }
                                 }
                             }
                         }
