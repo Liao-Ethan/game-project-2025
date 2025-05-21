@@ -15,7 +15,7 @@ Level 1
 14 白 白 "bái" white
 15 黑 黑 "hēi" black
 16 車 车 “chē" car
-17 早 早"zǎo" early
+17 早 早 "zǎo" early
 18 山 山 “shān" mountain
 Level 2
 1 要 要 "yào" want

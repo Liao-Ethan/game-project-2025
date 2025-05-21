@@ -71,7 +71,6 @@ import java.awt.event.ActionListener;
            {
                 levelChosen = 1;
                 bobLevel.getCards().show(bobLevel, "game");
-                level1.setSelected(false);
                 setLevel();
            }
            else if (buttonPressed.equals("Level 2"))
@@ -88,7 +87,6 @@ import java.awt.event.ActionListener;
                     notif.setText("Please get everything correct in level 1 before proceeding.");
                     notif.setForeground(Color.ORANGE);
                 }
-                level2.setSelected(false);
            }
            else
            {
@@ -96,7 +94,6 @@ import java.awt.event.ActionListener;
                 {
                     levelChosen = 3;
                     bobLevel.getCards().show(bobLevel, "game");
-                    level3.setSelected(false);
                     setLevel();
                 }
                 else
@@ -117,5 +114,8 @@ import java.awt.event.ActionListener;
 
           notif.setText("Please select a level.");
           notif.setForeground(Color.BLACK);
+          level1.setSelected(false);
+          level2.setSelected(false);
+          level3.setSelected(false);
      }
  }
