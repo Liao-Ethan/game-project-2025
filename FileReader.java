@@ -93,7 +93,7 @@ class FileReader
         }
         else
         {
-            newList = new String[1];
+            newList = new String[10];
         }
 
         for (int i=0; i<newList.length; i++)
@@ -103,8 +103,7 @@ class FileReader
             temp = newList[i];
             newList[i] = newList[randIdx];
             newList[randIdx] = temp;
-        }
-
+        } 
         return newList;
     }
 

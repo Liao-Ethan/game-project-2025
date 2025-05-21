@@ -100,49 +100,51 @@ public class PlayerInfo
         }
     }
 
-    public void setScore(int levelIn, int newScore)
+    public void setScore()
     {
-        levelScores[levelIn-1] = Math.max(levelScores[levelIn-1], newScore);
+
+        int newScore = 0;
+        for (int i=0; i<LEVEL1_COUNT; i++)
+        {
+            if (firstTry[i] == true)
+            {
+                newScore++;
+            }
+        }
+        levelScores[0] = newScore;
+        newScore = 0;
+
+        for (int i=LEVEL1_COUNT; i<LEVEL1_COUNT + LEVEL2_COUNT; i++)
+        {
+            if (firstTry[i] == true)
+            {
+                newScore++;
+            }
+        }
+        levelScores[1] = newScore;
+        newScore = 0;
+
+        for (int i=LEVEL1_COUNT+LEVEL2_COUNT; i<LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT; i++)
+        {
+            if (firstTry[i] == true)
+            {
+                newScore++;
+            }
+        }
+        levelScores[2] = newScore;
     }
 
     public boolean isComplete(int levelIn)
     {
-        levelIn--;
-        if (levelIn == 0)
+        levelIn-=2;
+        if (levelScores[levelIn] >= 10)
         {
-            if (levelScores[levelIn] == LEVEL1_COUNT)
-            {
-                return true;
-            }  
-            else
-            {
-                return false;
-            }
+            return true;
         }
-        else 
-        if (levelIn == 1)
+        else
         {
-            if (levelScores[levelIn] == LEVEL2_COUNT)
-            {
-                return true;
-            }  
-            else
-            {
-                return false;
-            }
+            return false;
         }
-        else if (levelIn == 2)
-        {
-            if (levelScores[levelIn] == LEVEL3_COUNT)
-            {
-                return true;
-            }  
-            else
-            {
-                return false;
-            }
-        }
-        return false;
     }
 
     public void switchCorrect(int levelIn, String question)

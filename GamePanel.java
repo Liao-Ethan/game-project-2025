@@ -10,6 +10,7 @@ import java.awt.Font;
 import java.awt.FontFormatException;
 
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JSlider;
 import javax.swing.JTextArea;
 import javax.swing.event.ChangeEvent;
@@ -39,11 +40,12 @@ class GamePanel extends BasePanel
     private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
     private JSlider fontSlider;
 
-    private int whichPad;
+    private int whichPad; // The index of which lily pad is correct.
     private int level; // the level selected on previous page
-    private int idx;
-    private int correctIdx;
+    private int idx; // Index of the randomly sorted questions.
+    private int correctIdx; // Counts how many questions are correct
     private float fontSize;
+    private int totalQs;
 
     private String[] questions;
 
@@ -54,6 +56,7 @@ class GamePanel extends BasePanel
         submit = new JButton("Submit");
         paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
+        totalQs = 10;
         
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
         Font labelFont = new Font("Serif", Font.PLAIN, 36); // fonts for labels
@@ -88,7 +91,9 @@ class GamePanel extends BasePanel
         questionLabel.setEditable(false);
         questionLabel.setLineWrap(true);
         questionLabel.setWrapStyleWord(true);
-        getPanel("left").add(questionLabel);
+
+        JScrollPane labelScroller = new JScrollPane(questionLabel);
+        getPanel("left").add(labelScroller);
 
         home.addActionListener(hbl);
         submit.addActionListener(hbl);
@@ -263,14 +268,14 @@ class GamePanel extends BasePanel
         {
             idx++;
         }
-        if (idx < questions.length)
+        if (idx < totalQs)
         {
             setQuestion(questions[idx]);
         }
         else
         {
             setQuestion("");
-            bh5.getPlayerInfo().setScore(level, correctIdx);
+            bh5.getPlayerInfo().setScore();
         }
     }
     public void setQuestion(String question)
@@ -282,7 +287,7 @@ class GamePanel extends BasePanel
         {
             question = question.substring(question.indexOf(" ")+1);
         }
-        if (idx < questions.length)
+        if (idx < totalQs)
         {
             if (bh5.getDef() == false)
             {
@@ -306,7 +311,7 @@ class GamePanel extends BasePanel
         String[] sentList = new String[4];
         for (int i = 0; i < sentList.length; i++)
         {
-            if (idx < questions.length)
+            if (idx < totalQs)
             {    
                 if (i == whichPad - 1) // put the correct answer at correct index
                 {
