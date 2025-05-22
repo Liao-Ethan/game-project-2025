@@ -31,18 +31,21 @@ class Cover extends JPanel
 		CoverButtonHandler cbh = new CoverButtonHandler(); // instantiate a new buttonHandler class
 		CoverNameHandler cnh = new CoverNameHandler();
 
+		// Textfield for the name
 		JTextField name = new JTextField("Enter your name");
 		name.setFont(new Font("serif", Font.BOLD, 16));
 		name.setBounds(560, 200, 160, 40);
 		name.addActionListener(cnh);
 		add(name);
 
+		// Button to move to the next page
 		JButton next = new JButton("Play");
 		next.setFont(new Font("serif", Font.BOLD, 24));
 		next.setBounds(568, 275, 144, 40);
 		next.addActionListener(cbh);
 		add(next);
 		
+		// Button to quit the program
 		JButton quit = new JButton("Quit");
 		quit.setFont(new Font("serif", Font.BOLD, 24));
 		quit.setBounds(568, 350, 144, 40);
@@ -58,7 +61,6 @@ class Cover extends JPanel
 			String command = evt.getActionCommand();
 			if (command.equals("Play"))
 			{
-				System.out.println(bh2.getPlayerInfo().getName());
 				if (!bh2.getPlayerInfo().getName().equals(""))
 				{
 					bh2.getCards().show(bh2, "home");
