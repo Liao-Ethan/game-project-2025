@@ -6,25 +6,28 @@ import java.io.FileWriter;
 
 public class PlayerInfo 
 {
-    private String name;
-    private int[] levelScores;
-    private boolean[] firstTry;
+    private String name; // Name of the player, name of the text file
+    private int[] levelScores; // Scores per level (how many were correct first try)
+    private boolean[] firstTry; // List that shows which words were answered correctly
 
-    private final int LEVEL1_COUNT = 18; // words that are in each level
+    // Words that are in each level
+    private final int LEVEL1_COUNT = 18;
     private final int LEVEL2_COUNT = 21;
     private final int LEVEL3_COUNT = 14;
 
 
     public PlayerInfo()
     {
+        // Set up PlayerInfo, initializes all field variables
         name = new String("");
         firstTry = new boolean[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
         levelScores = new int[]{0, 0, 0};
         reset();
-        // checkForFile();
     }
 
 
+    // Uses the classic try catch to load pre-existing data of the player.
+    // If the player doesn't exist then it is disregarded.
     public void checkForFile()
     {
         File file = new File(name + ".txt");
@@ -47,6 +50,7 @@ public class PlayerInfo
         }
     }
 
+    // Getter and setter for the name of the user
     public String getName()
     {
         return name;
@@ -57,6 +61,7 @@ public class PlayerInfo
         name = newName;
     }
 
+    // Uses PrintWriter and try catch to write the player's save data.
     public void writeSave()
     {
         PrintWriter pw = null;
@@ -86,6 +91,7 @@ public class PlayerInfo
         }
     }
 
+    // Reset all variables in the case of a new player in the same session.
     public void reset()
     {
         name = new String("");
@@ -100,6 +106,7 @@ public class PlayerInfo
         }
     }
 
+    // Sets the score of the player in a certain level
     public void setScore()
     {
         int newScore = 0;
@@ -133,6 +140,7 @@ public class PlayerInfo
         levelScores[2] = newScore;
     }
 
+    // Check ifthe player can proceed to the next level.
     public boolean isComplete(int levelIn)
     {
         System.out.println("LevelScores at " + levelIn + " = " + levelScores[levelIn]);
@@ -146,6 +154,7 @@ public class PlayerInfo
         }
     }
 
+    // Switches the word to be correct if the player answered correctly.
     public void switchCorrect(int levelIn, String question)
     {
         int idxAdder = 0;
@@ -160,6 +169,7 @@ public class PlayerInfo
         firstTry[idxAdder +( Integer.parseInt(question.substring(0, question.indexOf(" "))) - 1)] = true; 
     }
 
+    // Getter for getting if the word was answered correctly.
     public boolean getCorrect(int idx)
     {
         return firstTry[idx];

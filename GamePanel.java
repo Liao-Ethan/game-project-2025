@@ -123,8 +123,14 @@ class GamePanel extends BasePanel
         // Font dize
         fontSize = 50f;
 
-        // Setting up and adding the fontSlider, for changing chinese character font size
+        // Setting up and adding the fontSlider, for changing chinese character font size. Includes label and panel
+        JPanel sliderPanel = new JPanel();
+        sliderPanel.setBackground(Color.BLUE);
+        sliderPanel.setLayout(new GridLayout(2, 1));
         SliderHandler sHandler = new SliderHandler();
+        JLabel sliderLabel = new JLabel("<html><center>Slider to change <br>character size</center></html>");
+        sliderLabel.setForeground(Color.WHITE);
+        sliderLabel.setFont(new Font("serif", Font.PLAIN, 18));
         fontSlider = new JSlider(10, 100, 50);
         fontSlider.setMajorTickSpacing(10);	// create tick marks on slider every 5 units
         fontSlider.setPaintTicks(true);
@@ -132,7 +138,10 @@ class GamePanel extends BasePanel
         fontSlider.setPaintLabels(true);
         fontSlider.addChangeListener(sHandler);
         fontSlider.setBackground(Color.BLUE);
-        getPanel("left").add(fontSlider);
+        fontSlider.setForeground(Color.WHITE);
+        sliderPanel.add(sliderLabel);
+        sliderPanel.add(fontSlider);
+        getPanel("left").add(sliderPanel);
     }
 
     // Resetting all the questions for a new run of the game
@@ -145,7 +154,7 @@ class GamePanel extends BasePanel
         questions = fReader.shuffle(level);
     }
 
-    // Loading the font
+    // Loading the font (Credit to Cory from StackOverflow)
     public Font loadFont()
     {
         Font chineseFont = null;
@@ -153,7 +162,7 @@ class GamePanel extends BasePanel
         String fileName = "assets/fonts/chinese.msyh.ttf";
         try 
         {
-            //create the font to use. Specify the size!
+            //create the font to use.
             chineseFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName)).deriveFont(50f);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
@@ -167,7 +176,7 @@ class GamePanel extends BasePanel
         } 
         catch(FontFormatException e) 
         {
-            System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
+            System.err.println("File \"YRDZST Medium.ttf\" cannot be used as a font.");
             e.printStackTrace();
             System.exit(3);
         }
@@ -350,6 +359,7 @@ class GamePanel extends BasePanel
                 else // All incorrect answers
                 {
                     String alt;
+                    boolean duplicate;
                     int randomWordIdx;
                     do 
                     {
@@ -360,29 +370,38 @@ class GamePanel extends BasePanel
                             alt = alt.substring(alt.indexOf(" ") + 1);
                         }
 
-                        for (int j=0; j<sentList.length; j++) // Remove duplicate answer choices
-                        {
-                            if (!alt.equals(question)) // Used if we need to exit the for loop immediately
-                            {
-                                if (bh5.getDef() == false) // Check for certain parts of the string depending on game mode
-                                {
-                                    if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
-                                    {
-                                        alt = question; // Redos the while loop
-                                        j = sentList.length; // Exits for loop, for efficiency
-                                    }
-                                }
-                                else
-                                {
-                                    if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
-                                    {
-                                        alt = question; // Redos while loop
-                                        j = sentList.length; // Exits for loop,for efficiency
-                                    }
-                                }
+                        // for (int j=0; j<sentList.length; j++) // Remove duplicate answer choices
+                        // {
+                        //     if (!alt.equals(question)) // Used if we need to exit the for loop immediately
+                        //     {
+                        //         if (bh5.getDef() == false) // Check for certain parts of the string depending on game mode
+                        //         {
+                        //             if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
+                        //             {
+                        //                 alt = question; // Redos the while loop
+                        //                 j = sentList.length; // Exits for loop, for efficiency
+                        //             }
+                        //         }
+                        //         else
+                        //         {
+                        //             if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
+                        //             {
+                        //                 alt = question; // Redos while loop
+                        //                 j = sentList.length; // Exits for loop,for efficiency
+                        //             }
+                        //         }
+                        //     }
+                        // }
+                        // check against the correct answer
+                        duplicate = alt.equals(question);
+                        
+                        // check against all previously filled slots
+                        for (int k = 0; !duplicate && k < i; k++) {
+                            if (alt.equals(sentList[k])) {
+                                duplicate = true;
                             }
                         }
-                    } while (alt.equals(question));
+                    } while (duplicate == true);
                     
                     // Add only relevant parts of the string depending on the game mode
                     if (bh5.getDef() == false)
