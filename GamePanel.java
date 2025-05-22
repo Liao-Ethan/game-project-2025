@@ -1,5 +1,4 @@
 /* GamePanel.java
- * Done by Lorence Tsai
  */
 
 import java.awt.Color;
@@ -31,29 +30,28 @@ import java.io.IOException;
 
 class GamePanel extends BasePanel
 {
-    private BobHolder bh5;
-    private JButton submit;
-    private Paint paint;
-    private JPanel correctPanel;
-    private JLabel correctLabel;
-    private FileReader fReader;
+    private BobHolder bh5; // BobHolder instance
+    private Paint paint; // instance of the Paint class, all drawing is done here
+    private JPanel correctPanel; // Panel holding correctLabel
+    private JLabel correctLabel; // Text label to show if the answer was correct or incorrrect
+    private FileReader fReader; // FileReader instance, used to get the random (totalqs) words
     private JTextArea questionLabel; // Must be field variable, as it exists in another panel and text will be changed frequently
-    private JSlider fontSlider;
+    private JSlider fontSlider; // Slider to change the font size of the characters
 
     private int whichPad; // The index of which lily pad is correct.
     private int level; // the level selected on previous page
     private int idx; // Index of the randomly sorted questions.
     private int correctIdx; // Counts how many questions are correct
-    private float fontSize;
-    private int totalQs;
+    private float fontSize; // Size of the font of the Chinese text
+    private int totalQs; // Total amount of questions that will be asked
 
-    private String[] questions;
+    private String[] questions; // List of all the questions
 
     public GamePanel(BobHolder bh5In)
     {
         super(bh5In, "game");
+        // Initialization of some field variables
         bh5 = bh5In;
-        submit = new JButton("Submit");
         paint = new Paint(this);
         add(paint, BorderLayout.CENTER);
         totalQs = 10;
@@ -61,29 +59,35 @@ class GamePanel extends BasePanel
         Font buttonFont = new Font("Dialog", Font.PLAIN, 30); // fonts for buttons
         Font labelFont = new Font("Serif", Font.PLAIN, 36); // fonts for labels
 
+        // Initializing correctLabel and correctPanel
         correctLabel = new JLabel(); // label on the side showing if correct or not
-
         correctPanel = new JPanel(); // panel that should hold the label
 
-        JButton home = new JButton("Home");
-        HomeButtonListener hbl = new HomeButtonListener();
-        
+        // Panel for the home button
         JPanel homeButtonPanel = new JPanel(); // JPanel where buttons are placed
         homeButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 75));
         homeButtonPanel.setBackground(Color.BLUE);
+
+        //Initializing and adding the home buton
+        JButton home = new JButton("Home");
+        HomeButtonListener hbl = new HomeButtonListener();
+        home.setFont(buttonFont); // setting fonts for the buttons
+        homeButtonPanel.add(home);
         
+        // Panel for the submit button
         JPanel secondButtonPanel = new JPanel();
         secondButtonPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 75));
         secondButtonPanel.setBackground(Color.BLUE);
         
-        home.setFont(buttonFont); // setting fonts for the buttons
+        // Initializing and adding submit button
+        JButton submit = new JButton("Submit");
         submit.setFont(buttonFont);
-        
-        homeButtonPanel.add(home);
         secondButtonPanel.add(submit);
 
+        // Setting up left panel
         getPanel("left").setLayout(new GridLayout(2, 1));
 
+        // Initializing and adding the question label, which will be part of the JScrollPane labelScroller
         questionLabel = new JTextArea();
         questionLabel.setFont(labelFont);
         questionLabel.setForeground(Color.WHITE);
@@ -92,12 +96,15 @@ class GamePanel extends BasePanel
         questionLabel.setLineWrap(true);
         questionLabel.setWrapStyleWord(true);
 
+        // ScrollPane for the questionLabel
         JScrollPane labelScroller = new JScrollPane(questionLabel);
         getPanel("left").add(labelScroller);
 
+        // Adding button action listeners
         home.addActionListener(hbl);
         submit.addActionListener(hbl);
 
+        // Setting up panel to show whether the question was answered correctly or not
         correctPanel.setBackground(Color.WHITE);
         correctLabel.setBackground(Color.WHITE);
         correctPanel.add(correctLabel);
@@ -106,16 +113,18 @@ class GamePanel extends BasePanel
         getPanel("right").add(correctPanel);
         paint.repaint();
 
+        // FileReader instance
         fReader = new FileReader("words");
         
+        // Setting up the questions for this level
         newQuestions(1);
-        whichPad = -1;
+        whichPad = -1; // Random init number
         proceedQuestion(false);
-
+        // Font dize
         fontSize = 50f;
 
+        // Setting up and adding the fontSlider, for changing chinese character font size
         SliderHandler sHandler = new SliderHandler();
-
         fontSlider = new JSlider(10, 100, 50);
         fontSlider.setMajorTickSpacing(10);	// create tick marks on slider every 5 units
         fontSlider.setPaintTicks(true);
@@ -126,6 +135,7 @@ class GamePanel extends BasePanel
         getPanel("left").add(fontSlider);
     }
 
+    // Resetting all the questions for a new run of the game
     public void newQuestions(int levelIn)
     {
         level = levelIn; // initialize the level
@@ -135,6 +145,7 @@ class GamePanel extends BasePanel
         questions = fReader.shuffle(level);
     }
 
+    // Loading the font
     public Font loadFont()
     {
         Font chineseFont = null;
@@ -164,6 +175,7 @@ class GamePanel extends BasePanel
         return chineseFont;
     }
 
+    // Checking if the answer was done correctly
     public void checkCorrect()
     {
         int xCoord = paint.getBobX(); // get coords of the frog(aka bob)
@@ -200,7 +212,7 @@ class GamePanel extends BasePanel
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Try Again");
         }
-        else
+        else // Boohoo it was all incorrect, come back for another run to get it correct
         {
             correctLabel.setForeground(Color.RED);
             correctLabel.setText("Incorrect");
@@ -210,6 +222,7 @@ class GamePanel extends BasePanel
         paint.repaint();
     }
 
+    // It is indeed the correct answer, change the text and color for correctLabel and proceed to the next question
     public void isCorrect()
     {
         correctLabel.setForeground(Color.GREEN);
@@ -218,6 +231,8 @@ class GamePanel extends BasePanel
         correctIdx++;
         proceedQuestion(true);
     }
+
+    // Handler for the slider
     class SliderHandler implements ChangeListener
     {
 
@@ -227,6 +242,8 @@ class GamePanel extends BasePanel
             paint.repaint();
         }
     }
+
+    // Handler for home button
     class HomeButtonListener implements ActionListener // button handler to check which button is pressed
     // and perform corresponding action
     {
@@ -247,6 +264,7 @@ class GamePanel extends BasePanel
         }
     }
 
+    // Getter setters for some field variables
     public FileReader getFReader()
     {
         return fReader;
@@ -262,62 +280,66 @@ class GamePanel extends BasePanel
         return idx;
     }
 
+    // Switch to the next question, or prepare for congratulation screen
     public void proceedQuestion(boolean nextQ)
     {
-        if (nextQ)
+        if (nextQ) // If it isn't just for initializing game panel
         {
             idx++;
         }
-        if (idx < totalQs)
+        if (idx < totalQs) // If there are still words left
         {
             setQuestion(questions[idx]);
         }
-        else
+        else // No more words, completion screen
         {
             setQuestion("");
             bh5.getPlayerInfo().setScore();
         }
     }
+
+    // Setting the text for all the lily pads and the question label
     public void setQuestion(String question)
     {
-        whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4
-        question = question.substring(question.indexOf(" ")+1);
+        whichPad = ((int)(Math.random() * 4)) + 1; // 1 to 4, pick a random lily pad to be correct
+        question = question.substring(question.indexOf(" ")+1); // Remove the number prefixing the text
         String labelText = "";
-        if (bh5.getSimplified() == true)
+        if (bh5.getSimplified() == true) // Remove more text if it is in simplified mode
         {
             question = question.substring(question.indexOf(" ")+1);
         }
-        if (idx < totalQs)
+        if (idx < totalQs) // Are there words left
         {
-            if (bh5.getDef() == false)
+            if (bh5.getDef() == false) // For word identification gameplay
             {
                 labelText = "Which character means:\n" + question.substring(question.lastIndexOf(" "));
             }
-            else
+            else // For definition gameplay
             {
-                // String firstWord = question.substring(question.indexOf(" ")+1);
                 labelText = "What does this mean: " + question.substring(0, question.indexOf(" "));
             }
         }
-        else
+        else // Level completed
         {
             labelText = "You have completed level " + level + ". Please return to the home page.";
         }
 
-        labelText += "\n\nScore: " + correctIdx + " / " + idx;
+        labelText += "\n\nScore: " + correctIdx + " / " + idx; // Show score
+        questionLabel.setText(labelText); // Changing questionLabel
 
-        questionLabel.setText(labelText);
-
+        // Array for all answer choice text
         String[] sentList = new String[4];
+
+        // Decide all questions
         for (int i = 0; i < sentList.length; i++)
         {
-            if (idx < totalQs)
+            if (idx < totalQs) // There are questions left
             {    
                 if (i == whichPad - 1) // put the correct answer at correct index
                 {
-                    if (bh5.getDef() == false)
+                    // Do some string manipulation to only show the relevant text, add to sentList array
+                    if (bh5.getDef() == false) // Word identification mode
                     {
-						// String questionSub = question.substring(question.indexOf(" ")+ 1);
                         sentList[i] = question.substring(0, question.indexOf(" "));
                     }
                     else
@@ -325,47 +347,44 @@ class GamePanel extends BasePanel
                         sentList[i] = question.substring(question.lastIndexOf(" ") + 1);
                     }
                 }
-                else
+                else // All incorrect answers
                 {
                     String alt;
                     int randomWordIdx;
                     do 
                     {
-                        randomWordIdx = (int)(Math.random() * questions.length);
+                        randomWordIdx = (int)(Math.random() * questions.length); // Pick random word (this and next line)
                         alt = questions[randomWordIdx].substring(questions[randomWordIdx].indexOf(" ")+1);
-                        if (bh5.getSimplified() == true)
+                        if (bh5.getSimplified() == true) // Cut some of the string off to show relevant parts
                         {
                             alt = alt.substring(alt.indexOf(" ") + 1);
                         }
 
-                        // System.out.print("alt: " + alt + " ");
-                        for (int j=0; j<sentList.length; j++)
+                        for (int j=0; j<sentList.length; j++) // Remove duplicate answer choices
                         {
-                            if (!alt.equals(question))
+                            if (!alt.equals(question)) // Used if we need to exit the for loop immediately
                             {
-                                if (bh5.getDef() == false)
+                                if (bh5.getDef() == false) // Check for certain parts of the string depending on game mode
                                 {
                                     if (alt.substring(0, alt.indexOf(" ")).equals(sentList[i]))
                                     {
-                                        alt = question;
-                                        j = sentList.length;
+                                        alt = question; // Redos the while loop
+                                        j = sentList.length; // Exits for loop, for efficiency
                                     }
                                 }
                                 else
                                 {
                                     if (alt.substring(alt.lastIndexOf(" ")).equals(sentList[i]))
                                     {
-                                        alt = question;
-                                        j = sentList.length;
+                                        alt = question; // Redos while loop
+                                        j = sentList.length; // Exits for loop,for efficiency
                                     }
                                 }
                             }
                         }
-                        // System.out.println("");
-
                     } while (alt.equals(question));
                     
-                    
+                    // Add only relevant parts of the string depending on the game mode
                     if (bh5.getDef() == false)
                     {
                         sentList[i] = alt.substring(0, alt.indexOf(" "));
@@ -378,12 +397,13 @@ class GamePanel extends BasePanel
             }
             else
             {
-                sentList[i] = "";
+                sentList[i] = ""; // No text, used for completion scren
             }
         }
-        paint.setQStrings(sentList);
+        paint.setQStrings(sentList); // Set the text for every lily pad
     }
 
+    // Getter for the font size, used for for the lily pads
     public float getFontSize()
     {
         return fontSize;
@@ -393,13 +413,13 @@ class GamePanel extends BasePanel
 
 class Paint extends JPanel implements MouseMotionListener, MouseListener
 {
-    private LilyPad[] pads;
-    private BobFrog bob;
-    private int xFrog;
-    private int yFrog;
-    private String[] qStrings;
+    private LilyPad[] pads; // Array of all the lily pads
+    private BobFrog bob; // Our beloved frog, used to answer questions
+    private int xFrog; // X coordinate of bob
+    private int yFrog; // Y coordinate of bob
+    private String[] qStrings; // String array of all the possible question choices 
 
-    private GamePanel gp;
+    private GamePanel gp; // Instance of game panel, used to get information from the parent
 
     public Paint(GamePanel gpIn)
     {
@@ -411,20 +431,24 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
             pads[i] = new LilyPad(this, 50 + (i % 2) * 360, 140 + (i / 2) * 240);
         }
 
+        // Default position of bob
         xFrog = 600;
         yFrog = 0;
         
+        // Initializing bob and giving him listeners
         bob = new BobFrog(this, xFrog, yFrog);
         addMouseMotionListener(this);
         addMouseListener(this);
     }
 
+    // Reset bob to proceed to the next question or when a new game starts
     public void resetBob()
     {
         bob.killTimer();
         bob = new BobFrog(this, 600, 0);
     }
 
+    // Getter setters for bob's coordinates
     public void setXFrog(int xFrog)
     {
         this.xFrog = xFrog;
@@ -447,10 +471,13 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         return xFrog;
     }
 
+    // The very famous paintComponent, draws everything
     public void paintComponent(Graphics g)
     {
         super.paintComponent(g);
 
+
+        // Draw lily pads, then gives every lily pad its respective answer choice
         for (int i = 0; i < 2; i++)
         {
             for (int j = 0; j < 2; j++)
@@ -462,30 +489,16 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
             }
         }
 
+        // Draw bob
         bob.drawImage(g);
     }
 
-    public void drawRects(Graphics g)
-    {
-        g.setColor(Color.PINK);
-        g.fillRect(0, 140, 380, 240);
-        g.fillRect(380, 140, 380, 240);
-        g.fillRect(0, 390, 380, 240);
-        g.fillRect(380, 390, 380, 240);
-
-        g.setColor(Color.BLACK);
-        g.drawRect(0, 140, 380, 240);
-        g.drawRect(380, 140, 380, 240);
-        g.drawRect(0, 390, 380, 240);
-        g.drawRect(380, 390, 380, 240);
-
-        
-    }
-
+    // All methods for abstract class MouseMotionListener
     public void mouseMoved(MouseEvent evt)
     {
     }
 
+    // Moves bob to mouse coordinates once the mouse drags it
     public void mouseDragged(MouseEvent evt)
     {
         bob.setCoords(new int[]{evt.getX(), evt.getY()});
@@ -494,6 +507,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         repaint();
     }
 
+    // Changes the animation of bob if the mouse is pressed
     public void mousePressed(MouseEvent evt)
     {
         bob.setFrameBounds(5, 6);
@@ -502,6 +516,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     public void mouseClicked(MouseEvent evt)
     {}
 
+    // Changes the animation of bob if the mouse is released
     public void mouseReleased(MouseEvent evt)
     {
         bob.setFrameBounds(0, 3);
@@ -513,6 +528,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     public void mouseExited(MouseEvent evt)
     {}
 
+    // Getters for bob's coordinates
     public int getBobX()
     {
         return bob.getX();
@@ -523,11 +539,13 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         return bob.getY();
     }
 
+    // Getting all the lilypads from pads
     public LilyPad[] getPads()
     {
         return pads;
     }
 
+    // Setting qStrings so it shows all the new answer choices
     public void setQStrings(String[] newList)
     {
         qStrings = newList;

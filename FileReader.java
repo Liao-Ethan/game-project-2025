@@ -25,10 +25,11 @@ class FileReader
         reader = null;
         wordsList = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT]; // set to lines in word.txt
         // wordsList = getList();
-        setUpWords();
+        setUpWords(); // Gets all the words, & gives all the items in wordsList values
         
     }
 
+    // Loads a file via the classic try-catch, gives the variables file and reader real values
     public void loadFile()
     {
         file = new File(name + ".txt");
@@ -43,6 +44,7 @@ class FileReader
         }
     }
 
+    // Gets every single vocab word needed from the input file.
     public String[] getList()
     {
         String[] words = new String[LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT];
@@ -67,9 +69,10 @@ class FileReader
         reader.close();
     }
 
+    // Gets every single word from a certain level, then sort the sublist into a random order
     public String[] shuffle(int level) // take in which level it is
     {
-        String[] newList;
+        String[] newList; // Is returned
         if (level == 1) // store only the words from the level selected to newList[]
         {
             newList = new String[LEVEL1_COUNT];
@@ -96,6 +99,7 @@ class FileReader
             newList = new String[10];
         }
 
+        // Sorts the list in a random order
         for (int i=0; i<newList.length; i++)
         {
             int randIdx = (int)(Math.random() * newList.length); // randomize the words in the array
@@ -107,6 +111,7 @@ class FileReader
         return newList;
     }
 
+    // Useful method to get the length of each level.
     public int getLevelLengths(int level) // returns the level chosen
     {
         if (level == 1)
@@ -123,6 +128,7 @@ class FileReader
         }
     }
 
+    // Gets all the words in the array wordsList (all vocab words)
     public String[] getWords()
     {
         return wordsList;
