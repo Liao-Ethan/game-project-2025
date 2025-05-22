@@ -81,8 +81,7 @@ class Cover extends JPanel
 		}
 	}
 
-	class CoverNameHandler implements ActionListener // button handler to check which button is clicked
-	// and do corresponding actions
+	class CoverNameHandler implements ActionListener // Handler class to check for name in the textArea
 	{
 		public void actionPerformed(ActionEvent evt)
 		{
