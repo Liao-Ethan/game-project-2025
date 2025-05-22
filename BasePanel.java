@@ -1,5 +1,6 @@
 /* Lorence Tsai
  * BasePanel.java
+ * Classes inherit this for good formatting
  */
 
 import java.awt.Color;
