@@ -1,0 +1,56 @@
+Level 1
+1 你 你 "nǐ" you
+2 好 好 "hǎo" okay
+3 我 我 "wǒ" me
+4 的 的 "de" of
+5 他 他 "tā" him
+6 不 不 "bù" no
+7 天 天 "tiān" day
+8 水 水 "shuǐ" water
+9 火 火 "huǒ" fire
+10 土 土 "tǔ" dirt
+11 中 中 "zhōng" middle
+12 上 上 “shàng" up
+13 下 下“xià" down
+14 白 白 "bái" white
+15 黑 黑 "hēi" black
+16 車 车 “chē" car
+17 早 早"zǎo" early
+18 山 山 “shān" mountain
+Level 2
+1 要 要 "yào" want
+2 成 成 "chéng" become
+3 鬼 鬼 “guǐ" ghost
+4 請 请 “qǐng" please
+5 紙 纸 "zhǐ" paper
+6 快 快 “kuài" fast
+7 慢 慢“màn" slow
+8 球 球 “qiú" ball
+9 飛 飞 “fēi" fly
+10 掃 扫 "sǎo" sweep
+11 湯 汤 “tāng" soup
+12 喝 喝 "hē" drink
+13 真的 真的 "zhēn de" real
+14 中文 中文 "zhōng wén" Chinese
+15 英文 英文 “yīng wén“ English
+16 我的 我的 “wǒ de" mine
+17 他的 他的 “tā de" his
+18 你的 你的 “nǐ de" your(s)
+19 你好 你好 “nǐ hǎo" hello
+20 再見 再见 ”zài jiàn" goodbye
+21 開心 开心 “kāi xīn" happy
+Level 3
+1 美國 美国 "měi guó" America
+2 加州 加州 "jiā zhōu" California
+3 功課 功课 "gōng kè" homework
+4 餃子 饺子 "jiǎo zǐ" dumpling
+5 電腦 电脑 "diàn nǎo" computer
+6 餅乾 饼干 "bǐng gān" cookie
+7 學校 学校 "xué xiào" school
+8 考試 考试 "kǎo shì" test
+9 睡覺 睡觉 "shuì jiào" sleep
+10 猴子 猴子 "hóu zǐ" monkey
+11 青蛙 青蛙 "qīng wā" frog
+12 家庭 家庭 "jiā tíng" household
+13 難過 难过 "nán guò" sad
+14 奇怪 奇怪 "qí guài" weird

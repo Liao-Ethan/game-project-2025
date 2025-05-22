@@ -13,10 +13,11 @@ import javax.swing.JPanel;
 
 public class LilyPad extends ImageHolder
 {
-    private String text;
-    private float fontSize;
+    private String text; // Stores the text that's drawn on the lily pad
+    private float fontSize; // Stores the size of font for the text of the lily pad
     public LilyPad(JPanel panelIn, int xIn, int yIn)
     {
+        // Set up lily pad as inherited from ImageHolder
         super(1, panelIn, "LilyPad", xIn, yIn);
         setFrameBounds(0, 0);
         getImages();
@@ -24,11 +25,13 @@ public class LilyPad extends ImageHolder
         fontSize = 50f;
     }
 
+    // Sets the variable text
     public void setWord(String question)
     {
         text = question.substring(0, question.indexOf(" "));
     }
 
+    // Loading the font (Credit to Cory from StackOverflow)
     public Font loadFont()
     {
         Font chineseFont = null;
@@ -36,19 +39,19 @@ public class LilyPad extends ImageHolder
         String fileName = "assets/fonts/chinese.msyh.ttf";
         try 
         {
-            //create the font to use. Specify the size!
+            //create the font to use. Size changes depending on font size
             chineseFont = Font.createFont(Font.TRUETYPE_FONT, new File(fileName)).deriveFont(fontSize);
             GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
             //register the font
             ge.registerFont(chineseFont);
         } 
-        catch (IOException e)
+        catch (IOException e) // Font file doesn't exist
         {
             System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
             e.printStackTrace();
             System.exit(2);
         } 
-        catch(FontFormatException e) 
+        catch(FontFormatException e) // Font file cannot be used
         {
             System.err.println("File \"YRDZST Medium.ttf\" does not exist.");
             e.printStackTrace();
@@ -58,6 +61,7 @@ public class LilyPad extends ImageHolder
         return chineseFont;
     }
 
+    // Draws the text onto the lily pad. text and fontSize is modified here.
     public void drawText(Graphics g, String text, float fontSizeIn)
     {
         fontSize = fontSizeIn;

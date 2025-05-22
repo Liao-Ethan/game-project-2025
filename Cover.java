@@ -4,7 +4,7 @@
  */
 import java.awt.Color;
 import java.awt.Font;
-
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,6 +17,7 @@ class Cover extends JPanel
 {
 	private BobHolder bh2; // BobHolder instance
 	private JTextField name; // Text field for collecting the name of the player, used for PlayerInfo in the BobHolder class
+	private Water water;
 	
 	public Cover(BobHolder bhIn)
 	{
@@ -53,6 +54,14 @@ class Cover extends JPanel
 		quit.setBounds(568, 350, 144, 40);
 		quit.addActionListener(cbh);
 		add(quit);
+		water = new Water(this);
+		water.setFrameBounds(0, 2);
+	}
+
+	public void paintComponent(Graphics g)
+	{
+		super.paintComponent(g);
+		water.drawImage(g);
 	}
 
 	// Resets the cover panel to its default states

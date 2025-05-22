@@ -39,7 +39,7 @@ public class Flashcards extends BasePanel // inherits from BasePanel
 
         // Initializing fReader, and prepare to set up all of the flashcards
         fReader = bh7.getGamePage().getFReader();
-        int sum = fReader.getLevelLengths(1) + fReader.getLevelLengths(2) + fReader.getLevelLengths(3);
+        int sum = fReader.getSum();
         cards = new JPanel[sum];
         for (int i=0; i< sum; i++)
         {
@@ -76,9 +76,11 @@ public class Flashcards extends BasePanel // inherits from BasePanel
     // Changes the color of every card depending on the values of firstTry from PlayerInfo
     public void resetCards()
     {
+        // System.out.println("Card length: " + cards.length);
         for (int i=0; i<cards.length; i++)
         {
             boolean isCorrect = bh7.getPlayerInfo().getCorrect(i);
+            // System.out.print(i + " " + isCorrect + "|");
             if (isCorrect == false)
             {
                 cards[i].setBackground(Color.RED);
@@ -88,6 +90,7 @@ public class Flashcards extends BasePanel // inherits from BasePanel
                 cards[i].setBackground(Color.GREEN);
             }
         }
+        // System.out.println("");
     }
 
     // Button listener
