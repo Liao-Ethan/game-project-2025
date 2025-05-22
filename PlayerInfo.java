@@ -35,7 +35,7 @@ public class PlayerInfo
             {
                 levelScores[i] = input.nextInt();
             }
-            for (int i=0; i<levelScores.length; i++)
+            for (int i=0; i<firstTry.length; i++)
             {
                 firstTry[i] = input.nextBoolean();
             }
@@ -135,7 +135,7 @@ public class PlayerInfo
 
     public boolean isComplete(int levelIn)
     {
-        levelIn-=2;
+        System.out.println("LevelScores at " + levelIn + " = " + levelScores[levelIn]);
         if (levelScores[levelIn] >= 10)
         {
             return true;
@@ -157,7 +157,7 @@ public class PlayerInfo
         {
             idxAdder = LEVEL1_COUNT + LEVEL2_COUNT;
         }
-        firstTry[idxAdder + Integer.parseInt(question.substring(0, question.indexOf(" "))) - 1] = true; 
+        firstTry[idxAdder +( Integer.parseInt(question.substring(0, question.indexOf(" "))) - 1)] = true; 
     }
 
     public boolean getCorrect(int idx)

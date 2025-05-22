@@ -128,6 +128,13 @@ class FileReader
         }
     }
 
+    // Get total sum of how many words exist
+    public int getSum()
+    {
+        // System.out.println(LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT);
+        return LEVEL1_COUNT + LEVEL2_COUNT + LEVEL3_COUNT;
+    }
+
     // Gets all the words in the array wordsList (all vocab words)
     public String[] getWords()
     {

@@ -74,7 +74,7 @@ import java.awt.event.ActionEvent;
            }
            else if (buttonPressed.equals("Level 2"))
            {
-                if (bobLevel.getPlayerInfo().isComplete(2))
+                if (bobLevel.getPlayerInfo().isComplete(0))
                 {
                     levelChosen = 2;
                     bobLevel.getCards().show(bobLevel, "game");
@@ -87,9 +87,9 @@ import java.awt.event.ActionEvent;
                     notif.setForeground(Color.ORANGE);
                 }
            }
-           else
+           else if (buttonPressed.equals("Level 3"))
            {
-                if (bobLevel.getPlayerInfo().isComplete(3))
+                if (bobLevel.getPlayerInfo().isComplete(1))
                 {
                     levelChosen = 3;
                     bobLevel.getCards().show(bobLevel, "game");
