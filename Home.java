@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
+import java.awt.Font;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -41,13 +42,16 @@ class Home extends BasePanel
 		ButtonGroup bg = new ButtonGroup();
 		RBHandler rbHandler = new RBHandler();
 
+		Font languageFont = new Font("Serif", Font.PLAIN, 30);
 
 		getPanel("left").setLayout(new FlowLayout(FlowLayout.CENTER, 100, 30));
 		JRadioButton trad = new JRadioButton("Traditional");
+		trad.setFont(languageFont);
 		trad.addActionListener(rbHandler);
 		getPanel("left").add(trad);
 
 		JRadioButton simp = new JRadioButton("Simplified");
+		simp.setFont(languageFont);
 		simp.addActionListener(rbHandler);
 		getPanel("left").add(simp);
 

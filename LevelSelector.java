@@ -90,7 +90,7 @@ import java.awt.event.ActionListener;
            }
            else
            {
-                if (bobLevel.getPlayerInfo().isComplete(3))
+                if (bobLevel.getPlayerInfo().isComplete(2) && bobLevel.getPlayerInfo().isComplete(3))
                 {
                     levelChosen = 3;
                     bobLevel.getCards().show(bobLevel, "game");
