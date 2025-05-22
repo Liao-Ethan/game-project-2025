@@ -420,6 +420,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     private String[] qStrings; // String array of all the possible question choices 
 
     private GamePanel gp; // Instance of game panel, used to get information from the parent
+    private Water water;
 
     public Paint(GamePanel gpIn)
     {
@@ -439,6 +440,8 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
         bob = new BobFrog(this, xFrog, yFrog);
         addMouseMotionListener(this);
         addMouseListener(this);
+
+        water = new Water(this);
     }
 
     // Reset bob to proceed to the next question or when a new game starts
@@ -476,7 +479,7 @@ class Paint extends JPanel implements MouseMotionListener, MouseListener
     {
         super.paintComponent(g);
 
-
+        water.drawImage(g);
         // Draw lily pads, then gives every lily pad its respective answer choice
         for (int i = 0; i < 2; i++)
         {
