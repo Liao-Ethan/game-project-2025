@@ -74,9 +74,7 @@ class ImageHolder extends JPanel
     {
         public void actionPerformed(ActionEvent evt)
         {
-            // System.out.println("" + name + idx);
             idx++;
-            // System.out.println("Updating hbahaha");
             if (idx >= end)
             {
                 idx = start;

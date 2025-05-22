@@ -76,11 +76,9 @@ public class Flashcards extends BasePanel // inherits from BasePanel
     // Changes the color of every card depending on the values of firstTry from PlayerInfo
     public void resetCards()
     {
-        // System.out.println("Card length: " + cards.length);
         for (int i=0; i<cards.length; i++)
         {
             boolean isCorrect = bh7.getPlayerInfo().getCorrect(i);
-            // System.out.print(i + " " + isCorrect + "|");
             if (isCorrect == false)
             {
                 cards[i].setBackground(Color.RED);
@@ -90,7 +88,6 @@ public class Flashcards extends BasePanel // inherits from BasePanel
                 cards[i].setBackground(Color.GREEN);
             }
         }
-        // System.out.println("");
     }
 
     // Button listener

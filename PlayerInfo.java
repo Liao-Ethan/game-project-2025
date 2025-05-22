@@ -143,7 +143,6 @@ public class PlayerInfo
     // Check ifthe player can proceed to the next level.
     public boolean isComplete(int levelIn)
     {
-        System.out.println("LevelScores at " + levelIn + " = " + levelScores[levelIn]);
         if (levelScores[levelIn] >= 10)
         {
             return true;
