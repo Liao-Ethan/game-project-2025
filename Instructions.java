@@ -45,25 +45,4 @@ class Instructions extends BasePanel
 
         // Set up the home button
         HomeListener hl = new HomeListener();
-        homeButton.addActionListener(hl);
         
-        // JScrollPane to display the entirety of instructionsText
-        JScrollPane scroller = new JScrollPane(instructionsText);
-        scroller.setPreferredSize(new Dimension(480, 200));
-        getPanel("center").add(scroller);
-        getPanel("center").add(homeButton);
-    }
-
-    // Button handler
-    class HomeListener implements ActionListener
-    {
-        public void actionPerformed(ActionEvent evt)
-        {
-            String command = evt.getActionCommand();
-            if (command.equals("Home"))
-            {
-                bh4.getCards().show(bh4, "home");
-            }
-        }
-    }
-}
